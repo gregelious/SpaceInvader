@@ -19,4 +19,8 @@ public class Barrier {
   void setHP(int newHP) {
     hP = newHP;
   }
+  
+  void display() {
+  
+  }
 }
