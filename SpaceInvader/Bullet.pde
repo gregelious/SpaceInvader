@@ -24,7 +24,9 @@ public class Bullet {
   }
   
   void display() {
-    
+    fill(c);
+    noStroke();
+    rect(locX, locY, 10*size, 40*size);
   }
   
   void move() {
