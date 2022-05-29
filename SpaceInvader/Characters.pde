@@ -19,4 +19,20 @@ public class Characters {
   int getLocY() {
     return locY;
   }
+  
+  void shoot() {
+    
+  }
+  
+  void move() {
+  
+  }
+  
+  void setHP(int newHP) {
+    hP = newHP;
+  }
+  
+  void display() {
+  
+  }
 }
