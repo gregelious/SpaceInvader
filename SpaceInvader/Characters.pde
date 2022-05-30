@@ -16,10 +16,6 @@ public class Characters {
     return locY;
   }
   
-  void shoot() {
-    
-  }
-  
   void move() {
   
   }
