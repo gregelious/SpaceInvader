@@ -27,6 +27,6 @@ public class Characters {
   void display() {
     fill(c);
     noStroke();
-    ellipse(locX, locY, 20, 20);
+    ellipse(locX, locY, 30, 30);
   }
 }
