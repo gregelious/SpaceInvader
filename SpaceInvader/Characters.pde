@@ -2,6 +2,7 @@ public class Characters {
   int hP;
   int locX;
   int locY;
+  color c;
   
   int getHP() {
     return hP;
@@ -28,6 +29,8 @@ public class Characters {
   }
   
   void display() {
-  
+    fill(c);
+    noStroke();
+    ellipse(locX, locY, 20, 20);
   }
 }
