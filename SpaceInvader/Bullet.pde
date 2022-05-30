@@ -7,7 +7,7 @@ public class Bullet {
   int dmg;
   int mode;
   color c;
-  
+
   public Bullet(int x, int y, int vel, int mode, int dam) {
     locX = x;
     locY = y;
@@ -17,22 +17,41 @@ public class Bullet {
     dmg = dam;
     if (mode == 1) {
       c = color(random(50) + 200, 10, 10);
-    }
-    else {
+    } else {
       c = color(10, 10, random(50) + 200);
     }
   }
-  
+
+  public Bullet(int x, int y, int mode) {
+    locX = x;
+    locY = y;
+    velocity = 5;
+    this.mode = mode;
+    size = 1;
+    dmg = 100;
+    if (mode == 1) {
+      c = color(random(50) + 200, 10, 10);
+    } else {
+      c = color(10, 10, random(50) + 200);
+    }
+  }
+
   void display() {
     fill(c);
     noStroke();
-    rect(locX, locY, 10*size, 40*size);
+    rect(locX - 5*size, locY - 20*size, 10*size, 40*size);
   }
-  
+
   void move() {
-  //mode 1 = up, 2 = down
+    //mode 1 = up, 2 = down
+    if (mode == 1) {
+      locY = locY - velocity;
+    }
+    else {
+      locY = locY + velocity;
+    }
   }
-  
+
   int getDmg() {
     return dmg;
   }
