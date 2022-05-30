@@ -17,6 +17,11 @@ void setup() {
     Enemy e = new Basic(i, 300);
     enemies.add(e);
   }
+  
+  for (int i = 90; i < 900; i += 230) {
+    Barrier b = new Barrier(i, 500);
+    barriers.add(b);
+  }
 }
 
 Player a = new Player();
@@ -28,8 +33,8 @@ void draw() {
   if (scoreCurrent > scoreHigh) {
     scoreHigh = scoreCurrent;
   }
-  text("Current Score: " + scoreCurrent, 20, 35);
-  text("Highest Score: " + scoreHigh, 300, 35);
+  text("Current Score: " + scoreCurrent, 200, 35);
+  text("Highest Score: " + scoreHigh, 535, 35);
   a.display();
   for (Enemy e : enemies) {
     e.move();
@@ -37,6 +42,9 @@ void draw() {
   }
   for (Bullet b : bullets) {
     b.move();
+    b.display();
+  }
+  for (Barrier b : barriers) {
     b.display();
   }
 }
