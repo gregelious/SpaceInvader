@@ -10,10 +10,10 @@ public class Player extends Characters {
   }
   
   void moveLeft() {
-  
+    locX = locX - 1;
   }
   
   void moveRight() {
-  
+    locX = locX + 1;
   }
 }
