@@ -1,7 +1,7 @@
 public class Barrier {
   int locX;
   int locY;
-  int size;
+  float size;
   int hP;
   color c;
   
@@ -22,11 +22,11 @@ public class Barrier {
     this.hP = hP;
   }
   
-  int getSize() {
+  float getSize() {
     return size;
   }
 
-  void setSize(int newSize) {
+  void setSize(float newSize) {
     size = newSize;
   }
 
