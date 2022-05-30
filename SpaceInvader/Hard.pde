@@ -4,14 +4,14 @@ public class Hard extends Enemy {
     locX = x;
     locY = y;
     c = color(random(20) + 40, 70, 140);
-    size = 1;
-    hP = 100;
+    size = 2;
+    hP = 250;
     strafe = 0;
   }
   
   void move() {
     if (strafe == 0) {
-      locX = locX + 1;
+      locX = locX + (int)random(5) + 1;
       if (locX > width) {
         strafe = 1;
       }
@@ -22,6 +22,8 @@ public class Hard extends Enemy {
         strafe = 0;
       }
     }
+    
+    locY = locY + (int)random(3) - 2;
   }
   
 }
