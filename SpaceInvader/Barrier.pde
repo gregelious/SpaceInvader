@@ -8,7 +8,7 @@ public class Barrier {
   public Barrier (int x, int y) {
     locX = x;
     locY = y;
-    size = 1;
+    size = 3;
     hP = 500;
     c = color(10, random(50) + 200, 10);
   }
@@ -42,16 +42,16 @@ public class Barrier {
     fill(c);
     noStroke();
     if (hP < 25) {
-      rect(locX, locY, 25*size, 50*size);
+      rect(locX, locY, 10*size, 4*size);
     }
     else if (hP < 50) {
-      rect(locX, locY, 25*size, 50*size);
+      rect(locX, locY, 20*size, 8*size);
     }
     else if (hP < 75) {
-      rect(locX, locY, 18*size, 36*size);
+      rect(locX, locY, 30*size, 12*size);
     }
     else {
-      rect(locX, locY, 25*size, 50*size);
+      rect(locX, locY, 40*size, 16*size);
     }
   }
 }
