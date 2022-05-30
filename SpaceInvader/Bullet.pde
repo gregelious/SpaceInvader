@@ -39,7 +39,7 @@ public class Bullet {
   void display() {
     fill(c);
     noStroke();
-    rect(locX - 5*size, locY - 20*size, 10*size, 40*size);
+    rect(locX - 4*size, locY - 16*size, 8*size, 32*size);
   }
 
   void move() {
