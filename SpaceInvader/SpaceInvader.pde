@@ -23,10 +23,18 @@ void draw() {
 }
 
 void keyPressed() {
-  if (keyCode == 'd') {
+  if (key == 'd') {
     a.moveRight();
   }
-  if (keyCode == 'a') {
+  if (key == 'a') {
     a.moveLeft();
+  }
+  if (key == CODED) {
+    if (keyCode == RIGHT) {
+      a.moveRight();
+    }
+    if (keyCode == LEFT) {
+      a.moveLeft();
+    }
   }
 }
