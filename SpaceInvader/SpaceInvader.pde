@@ -1,18 +1,20 @@
 ArrayList<Enemy> enemies;
 ArrayList<Barrier> barriers;
+ArrayList<Bullet> bullets;
 //ArrayList<Player> playerLives;
 int scoreCurrent;
 int scoreHigh;
 
 void setup() {
-  size(1000,700);
+  size(1000, 700);
   enemies = new ArrayList<Enemy>();
   barriers = new ArrayList<Barrier>();
+  bullets = new ArrayList<Bullet>();
   //playerLives = new ArrayList<Player>();
   scoreCurrent = 0;
   scoreHigh = 0;
-  for (int i = 15; i < 985; i += 45) {
-    Enemy e = new Basic(i, 500);
+  for (int i = 15; i < 985; i += 90) {
+    Enemy e = new Basic(i, 300);
     enemies.add(e);
   }
 }
@@ -33,6 +35,14 @@ void draw() {
     e.move();
     e.display();
   }
+  for (Bullet b : bullets) {
+    b.move();
+    b.display();
+  }
+}
+
+void mouseClicked() {
+  shoot(a.getLocX(), a.getLocY(), 1);
 }
 
 void keyPressed() {
@@ -50,4 +60,9 @@ void keyPressed() {
       a.moveLeft();
     }
   }
+}
+
+void shoot(int x, int y, int mode) {
+  Bullet b = new Bullet(x, y, mode);
+  bullets.add(b);
 }
