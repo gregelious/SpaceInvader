@@ -2,8 +2,8 @@ public class Player extends Characters {
   String bulletType;
   
   public Player() {
-    locX = width/2;
-    locY = height - height/8;
+    locX = 500;
+    locY = 615;
     c = color(random(50) + 200, 10, 10);
     hP = 100;
   }
