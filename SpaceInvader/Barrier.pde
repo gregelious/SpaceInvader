@@ -42,16 +42,16 @@ public class Barrier {
     fill(c);
     noStroke();
     if (hP < 25) {
-      ellipse(locX, locY, 25*size, 50*size);
+      rect(locX, locY, 25*size, 50*size);
     }
     else if (hP < 50) {
-      ellipse(locX, locY, 25*size, 50*size);
+      rect(locX, locY, 25*size, 50*size);
     }
     else if (hP < 75) {
-      ellipse(locX, locY, 18*size, 36*size);
+      rect(locX, locY, 18*size, 36*size);
     }
     else {
-      ellipse(locX, locY, 25*size, 50*size);
+      rect(locX, locY, 25*size, 50*size);
     }
   }
 }
