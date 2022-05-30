@@ -1,7 +1,7 @@
 public class Player extends Characters {
   String bulletType;
   
-  public Player () {
+  public Player() {
     locX = 10;
     locY = 10;
     c = color(random(50) + 200, 10, 10);
@@ -23,8 +23,5 @@ public class Player extends Characters {
   void moveRight() {
     locX = locX + 1;
   }
-  
-  void display() {
-    super.display();
-  }
+
 }
