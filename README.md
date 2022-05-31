@@ -22,3 +22,12 @@ Press A or LEFT ARROW to move left
 Press D or RIGHT ARROW to move right
 
 Click mouse button to shoot
+
+
+Development Log:
+
+Saturday May 28: only made classes, did simplest one line methods.
+
+Sunday May 30: Mostly completed evey class except main SpaceInvader class.
+
+Monday May 30: did SpaceInvader class and tweaked other classes slightly and made demo branch. Now the game is slightly playable and there are enemies that shoot back and a score counter.
