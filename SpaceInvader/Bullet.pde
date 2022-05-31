@@ -59,4 +59,12 @@ public class Bullet {
   int getMode() {
     return mode;
   }
+  
+  int getLocX() {
+    return locX;
+  }
+  
+  int getLocY() {
+    return locY;
+  }
 }
