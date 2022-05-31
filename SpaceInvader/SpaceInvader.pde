@@ -1,12 +1,14 @@
 ArrayList<Enemy> enemies;
 ArrayList<Barrier> barriers;
 ArrayList<Bullet> bullets;
+Player a;
 //ArrayList<Player> playerLives;
 int scoreCurrent;
 int scoreHigh;
 int countdown;
 
 void setup() {
+  Player a = new Player();
   countdown = 0;
   size(1000, 700);
   enemies = new ArrayList<Enemy>();
@@ -28,7 +30,7 @@ void setup() {
   **/
 }
 
-Player a = new Player();
+//Player a = new Player();
 
 void draw() {
   if (countdown > 0) {
@@ -55,6 +57,9 @@ void draw() {
     } else {
       e.move();
       e.display();
+      if (countdown == i * 2) {
+        shoot(e.getLocX(), e.getLocY(), 2);
+      }
     }
   }
 
