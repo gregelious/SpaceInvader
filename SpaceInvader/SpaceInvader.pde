@@ -37,6 +37,9 @@ void draw() {
   text("Highest Score: " + scoreHigh, 535, 35);
   a.display();
   for (Enemy e : enemies) {
+    if (e.getHP() <= 0) {
+      enemies.remove(e);
+    }
     e.move();
     e.display();
   }
