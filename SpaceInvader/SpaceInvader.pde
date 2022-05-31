@@ -35,7 +35,9 @@ void draw() {
   }
   text("Current Score: " + scoreCurrent, 200, 35);
   text("Highest Score: " + scoreHigh, 535, 35);
-  a.display();
+  if (a.getHP() > 0) {
+    a.display();
+  }
   for (Enemy e : enemies) {
     if (e.getHP() <= 0) {
       enemies.remove(e);
@@ -44,6 +46,14 @@ void draw() {
     e.display();
   }
   for (Bullet b : bullets) {
+    if (b.getMode() == 1) {
+    for (Enemy e: enemies) {
+      if (Math.abs(e.getLocX() - b.getLocX()) < 15 && Math.abs(e.getLocY() - b.getLocY()) < 15 ) {
+        e.setHP(e.getHP() - b.getDmg());
+        bullets.remove(b);
+      } 
+    }
+    }
     b.move();
     b.display();
   }
