@@ -17,11 +17,13 @@ void setup() {
     Enemy e = new Basic(i, 300);
     enemies.add(e);
   }
-
+  
+  /**
   for (int i = 90; i < 900; i += 230) {
     Barrier b = new Barrier(i, 500);
     barriers.add(b);
   }
+  **/
 }
 
 Player a = new Player();
@@ -50,13 +52,12 @@ void draw() {
       e.display();
     }
   }
-  
+
   for (int i = 0; i < barriers.size(); i++) {
     Barrier b = barriers.get(i);
     if (b.getHP() <= 0) {
       barriers.remove(b);
       i--;
-      scoreCurrent++;
     } else {
       b.display();
     }
@@ -80,18 +81,19 @@ void draw() {
         i--;
       }
     }
+    
     for (int x = 0; x < barriers.size(); x++) {
-        Barrier ba = barriers.get(x);
-        if (Math.abs(ba.getLocX() - b.getLocX()) < 61 && Math.abs(ba.getLocY() - b.getLocY()) < 25 ) {
-          ba.setHP(ba.getHP() - b.getDmg());
-          bullets.remove(b);
-          i--;
-        }
+      Barrier ba = barriers.get(x);
+      if (((ba.getLocX() <= b.getLocX() + 7) || (b.getLocX() <= ba.getLocX() + 120)) && Math.abs(ba.getLocY() - b.getLocY()) < 25 ) {
+        ba.setHP(ba.getHP() - b.getDmg());
+        bullets.remove(b);
+        i--;
       }
+    }
+   
     b.move();
     b.display();
   }
-  
 }
 
 void mouseClicked() {
