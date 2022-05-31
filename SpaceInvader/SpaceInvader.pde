@@ -23,88 +23,102 @@ void setup() {
     enemies.add(e);
     h += 40;
   }
-  
+
   /**
-  for (int i = 90; i < 900; i += 230) {
-    Barrier b = new Barrier(i, 500);
-    barriers.add(b);
-  }
-  **/
+   for (int i = 90; i < 900; i += 230) {
+   Barrier b = new Barrier(i, 500);
+   barriers.add(b);
+   }
+   **/
 }
 
 //Player a = new Player();
 
 void draw() {
-  if (countdown > 0) {
-    countdown--;
-  }
-  background(35);
-  fill(255);
-  textSize(30);
-  if (scoreCurrent > scoreHigh) {
-    scoreHigh = scoreCurrent;
-  }
-  text("Current Score: " + scoreCurrent, 200, 35);
-  text("Highest Score: " + scoreHigh, 535, 35);
   if (a.getHP() > 0) {
-    a.display();
-  }
+    if (countdown > 0) {
+      countdown--;
+    }
+    background(35);
+    fill(255);
+    textSize(30);
+    if (scoreCurrent > scoreHigh) {
+      scoreHigh = scoreCurrent;
+    }
+    text("Current Score: " + scoreCurrent, 200, 35);
+    text("Highest Score: " + scoreHigh, 535, 35);
+    if (a.getHP() > 0) {
+      a.display();
+    }
 
-  for (int i = 0; i < enemies.size(); i++) {
-    Enemy e = enemies.get(i);
-    if (e.getHP() <= 0) {
-      enemies.remove(e);
-      i--;
-      scoreCurrent += 100;
-    } else {
-      e.move();
-      e.display();
-      if (countdown == i * 3) {
-        shoot(e.getLocX(), e.getLocY(), 2);
+    for (int i = 0; i < enemies.size(); i++) {
+      Enemy e = enemies.get(i);
+      if (e.getHP() <= 0) {
+        enemies.remove(e);
+        i--;
+        scoreCurrent += 100;
+      } else {
+        e.move();
+        e.display();
+        if (countdown == i * 3) {
+          shoot(e.getLocX(), e.getLocY(), 2);
+        }
       }
     }
-  }
 
-  for (int i = 0; i < barriers.size(); i++) {
-    Barrier b = barriers.get(i);
-    if (b.getHP() <= 0) {
-      barriers.remove(b);
-      i--;
-    } else {
-      b.display();
+    for (int i = 0; i < barriers.size(); i++) {
+      Barrier b = barriers.get(i);
+      if (b.getHP() <= 0) {
+        barriers.remove(b);
+        i--;
+      } else {
+        b.display();
+      }
     }
-  }
 
-  for (int i = 0; i < bullets.size(); i++) {
-    Bullet b = bullets.get(i);
-    if (b.getMode() == 1) {
-      for (int x = 0; x < enemies.size(); x++) {
-        Enemy e = enemies.get(x);
-        if (Math.abs(e.getLocX() - b.getLocX()) < 15 && Math.abs(e.getLocY() - b.getLocY()) < 15 ) {
-          e.setHP(e.getHP() - b.getDmg());
+
+    for (int i = 0; i < bullets.size(); i++) {
+      Bullet b = bullets.get(i);
+      if (b.getMode() == 1) {
+        for (int x = 0; x < enemies.size(); x++) {
+          Enemy e = enemies.get(x);
+          if (Math.abs(e.getLocX() - b.getLocX()) < 15 && Math.abs(e.getLocY() - b.getLocY()) < 15 ) {
+            e.setHP(e.getHP() - b.getDmg());
+            bullets.remove(b);
+            i--;
+          }
+        }
+      } else if (b.getMode() == 2) {
+        if (Math.abs(a.getLocX() - b.getLocX()) < 15 && Math.abs(a.getLocY() - b.getLocY()) < 15 ) {
+          a.setHP(a.getHP() - b.getDmg());
           bullets.remove(b);
           i--;
         }
       }
-    } else if (b.getMode() == 2) {
-      if (Math.abs(a.getLocX() - b.getLocX()) < 15 && Math.abs(a.getLocY() - b.getLocY()) < 15 ) {
-        a.setHP(a.getHP() - b.getDmg());
-        bullets.remove(b);
-        i--;
+
+      for (int x = 0; x < barriers.size(); x++) {
+        Barrier ba = barriers.get(x);
+        if (((ba.getLocX() <= b.getLocX() + 7) || (b.getLocX() <= ba.getLocX() + 120)) && Math.abs(ba.getLocY() - b.getLocY()) < 25 ) {
+          ba.setHP(ba.getHP() - b.getDmg());
+          bullets.remove(b);
+          i--;
+        }
       }
+
+      b.move();
+      b.display();
     }
-    
-    for (int x = 0; x < barriers.size(); x++) {
-      Barrier ba = barriers.get(x);
-      if (((ba.getLocX() <= b.getLocX() + 7) || (b.getLocX() <= ba.getLocX() + 120)) && Math.abs(ba.getLocY() - b.getLocY()) < 25 ) {
-        ba.setHP(ba.getHP() - b.getDmg());
-        bullets.remove(b);
-        i--;
-      }
+  }
+  else {
+    background(0);
+    fill(255);
+    textSize(80);
+    if (scoreCurrent > scoreHigh) {
+      scoreHigh = scoreCurrent;
     }
-   
-    b.move();
-    b.display();
+    text("You Suck!", 310, 150);
+    text("Score: " + scoreCurrent, 140, 330);
+    text("Highest Score: " + scoreHigh, 140, 480);
   }
 }
 
