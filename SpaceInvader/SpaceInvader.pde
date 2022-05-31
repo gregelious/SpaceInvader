@@ -4,8 +4,10 @@ ArrayList<Bullet> bullets;
 //ArrayList<Player> playerLives;
 int scoreCurrent;
 int scoreHigh;
+int countdown;
 
 void setup() {
+  countdown = 0;
   size(1000, 700);
   enemies = new ArrayList<Enemy>();
   barriers = new ArrayList<Barrier>();
@@ -29,6 +31,9 @@ void setup() {
 Player a = new Player();
 
 void draw() {
+  if (countdown > 0) {
+    countdown--;
+  }
   background(35);
   fill(255);
   textSize(30);
@@ -97,7 +102,10 @@ void draw() {
 }
 
 void mouseClicked() {
-  shoot(a.getLocX(), a.getLocY(), 1);
+  if (countdown == 0) {
+    shoot(a.getLocX(), a.getLocY(), 1);
+    countdown += 40;
+  }
 }
 
 void keyPressed() {
