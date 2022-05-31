@@ -5,7 +5,7 @@ public class Player extends Characters {
     locX = 500;
     locY = 615;
     c = color(random(50) + 200, 10, 10);
-    hP = 100;
+    hP = 300;
   }
   
   String getBulletType() {
