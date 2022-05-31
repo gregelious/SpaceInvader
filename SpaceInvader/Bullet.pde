@@ -55,4 +55,8 @@ public class Bullet {
   int getDmg() {
     return dmg;
   }
+  
+  int getMode() {
+    return mode;
+  }
 }
