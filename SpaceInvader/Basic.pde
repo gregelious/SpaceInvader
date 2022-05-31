@@ -12,19 +12,15 @@ public class Basic extends Enemy {
   void move() {
     if (strafe == 0) {
       locX = locX + 3;
-      if (locX > 985) {
-      locX = 985;
-    }
       if (locX > width) {
+        locX = 985;
         strafe = 1;
       }
     }
     if (strafe == 1) {
       locX = locX - 3;
-      if (locX < 15) {
-      locX = 15;
-    }
       if (locX < 0) {
+        locX = 15;
         strafe = 0;
       }
     }
