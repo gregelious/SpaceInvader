@@ -58,6 +58,9 @@ void draw() {
         i--;
         scoreCurrent += 100;
       } else {
+        if (Math.abs(e.getLocX() - a.getLocX()) < 30 && Math.abs(e.getLocY() - a.getLocY()) < 30) {
+          a.setHP(0);
+        }
         e.move();
         e.display();
         if (countdown == i * 3) {
