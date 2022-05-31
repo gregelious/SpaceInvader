@@ -8,7 +8,7 @@ int scoreHigh;
 int countdown;
 
 void setup() {
-  Player a = new Player();
+  a = new Player();
   countdown = 0;
   size(1000, 700);
   enemies = new ArrayList<Enemy>();
@@ -17,9 +17,11 @@ void setup() {
   //playerLives = new ArrayList<Player>();
   scoreCurrent = 0;
   scoreHigh = 0;
-  for (int i = 15; i < 985; i += 90) {
-    Enemy e = new Basic(i, 300);
+  int h = 100;
+  for (int i = 15; i < 900; i += 90) {
+    Enemy e = new Basic(i, h);
     enemies.add(e);
+    h += 40;
   }
   
   /**
@@ -53,11 +55,11 @@ void draw() {
     if (e.getHP() <= 0) {
       enemies.remove(e);
       i--;
-      scoreCurrent++;
+      scoreCurrent += 100;
     } else {
       e.move();
       e.display();
-      if (countdown == i * 2) {
+      if (countdown == i * 3) {
         shoot(e.getLocX(), e.getLocY(), 2);
       }
     }
