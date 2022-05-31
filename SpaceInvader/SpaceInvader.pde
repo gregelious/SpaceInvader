@@ -56,7 +56,7 @@ void draw() {
     if (b.getMode() == 1) {
       for (int x = 0; x < enemies.size(); x++) {
         Enemy e = enemies.get(x);
-        if (Math.abs(e.getLocX() - b.getLocX()) < 15 && Math.abs(e.getLocY() - b.getLocY()) < 15 ) {
+        if (Math.abs(e.getLocX() - b.getLocX()) <= 15 && Math.abs(e.getLocY() - b.getLocY()) <= 15 ) {
           e.setHP(e.getHP() - b.getDmg());
           bullets.remove(b);
           i--;
