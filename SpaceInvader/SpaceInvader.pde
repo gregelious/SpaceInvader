@@ -38,7 +38,7 @@ void draw() {
   if (a.getHP() > 0) {
     a.display();
   }
-  
+
   for (int i = 0; i < enemies.size(); i++) {
     Enemy e = enemies.get(i);
     if (e.getHP() <= 0) {
@@ -50,7 +50,7 @@ void draw() {
       e.display();
     }
   }
-  
+
   for (int i = 0; i < bullets.size(); i++) {
     Bullet b = bullets.get(i);
     if (b.getMode() == 1) {
@@ -62,9 +62,17 @@ void draw() {
           i--;
         }
       }
+    } else if (b.getMode() == 2) {
+      if (Math.abs(a.getLocX() - b.getLocX()) < 15 && Math.abs(a.getLocY() - b.getLocY()) < 15 ) {
+        a.setHP(a.getHP() - b.getDmg());
+        bullets.remove(b);
+        i--;
+      }
     }
+    b.move();
+    b.display();
   }
-  
+
   for (Barrier b : barriers) {
     b.display();
   }
