@@ -14,6 +14,7 @@ public class Basic extends Enemy {
       locX = locX + 3;
       if (locX > width) {
         locX = 985;
+        locY = locY + 30;
         strafe = 1;
       }
     }
@@ -21,6 +22,7 @@ public class Basic extends Enemy {
       locX = locX - 3;
       if (locX < 0) {
         locX = 15;
+        locY = locY + 20;
         strafe = 0;
       }
     }
