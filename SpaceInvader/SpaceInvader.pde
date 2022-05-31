@@ -50,6 +50,17 @@ void draw() {
       e.display();
     }
   }
+  
+  for (int i = 0; i < barriers.size(); i++) {
+    Barrier b = barriers.get(i);
+    if (b.getHP() <= 0) {
+      barriers.remove(b);
+      i--;
+      scoreCurrent++;
+    } else {
+      b.display();
+    }
+  }
 
   for (int i = 0; i < bullets.size(); i++) {
     Bullet b = bullets.get(i);
@@ -69,13 +80,18 @@ void draw() {
         i--;
       }
     }
+    for (int x = 0; x < barriers.size(); x++) {
+        Barrier ba = barriers.get(x);
+        if (Math.abs(ba.getLocX() - b.getLocX()) < 61 && Math.abs(ba.getLocY() - b.getLocY()) < 25 ) {
+          ba.setHP(ba.getHP() - b.getDmg());
+          bullets.remove(b);
+          i--;
+        }
+      }
     b.move();
     b.display();
   }
-
-  for (Barrier b : barriers) {
-    b.display();
-  }
+  
 }
 
 void mouseClicked() {
