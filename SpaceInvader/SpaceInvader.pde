@@ -83,7 +83,7 @@ void draw() {
       if (b.getMode() == 1) {
         for (int x = 0; x < enemies.size(); x++) {
           Enemy e = enemies.get(x);
-          if (Math.abs(e.getLocX() - b.getLocX()) < 19 && Math.abs(e.getLocY() - b.getLocY()) < 31 ) {
+          if (Math.abs(e.getLocX() - b.getLocX()) < 14 && Math.abs(e.getLocY() - b.getLocY()) < 31 ) {
             e.setHP(e.getHP() - b.getDmg());
             bullets.remove(b);
             i--;
@@ -91,7 +91,7 @@ void draw() {
           }
         }
       } else if (b.getMode() == 2) {
-        if (Math.abs(a.getLocX() - b.getLocX()) < 19 && Math.abs(a.getLocY() - b.getLocY()) < 31 ) {
+        if (Math.abs(a.getLocX() - b.getLocX()) < 14 && Math.abs(a.getLocY() - b.getLocY()) < 31 ) {
           a.setHP(a.getHP() - b.getDmg());
           bullets.remove(b);
           i--;
@@ -102,7 +102,7 @@ void draw() {
       if (gone == 0) {
         for (int x = 0; x < barriers.size(); x++) {
           Barrier ba = barriers.get(x);
-          if (Math.abs(ba.getLocX() - b.getLocX()) < 49 && Math.abs(ba.getLocY() - b.getLocY()) < 33) {
+          if (Math.abs(ba.getLocX() - b.getLocX()) < 47 && Math.abs(ba.getLocY() - b.getLocY()) < 33) {
             ba.setHP(ba.getHP() - b.getDmg());
             bullets.remove(b);
             i--;
