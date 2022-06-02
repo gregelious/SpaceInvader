@@ -17,14 +17,14 @@ public class Player extends Characters {
   }
   
   void moveLeft() {
-    locX = locX - 4;
+    locX = locX - 6;
     if (locX < 15) {
       locX = 15;
     } 
   }
   
   void moveRight() {
-    locX = locX + 4;
+    locX = locX + 6;
     if (locX > 985) {
       locX = 985;
     }
