@@ -63,7 +63,7 @@ void draw() {
         }
         e.move();
         e.display();
-        if (countdown == i * 3) {
+        if (countdown == i * 3 + 1) {
           shoot(e.getLocX(), e.getLocY(), 2);
         }
       }
