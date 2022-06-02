@@ -8,7 +8,7 @@ public class Barrier {
   public Barrier (int x, int y) {
     locX = x;
     locY = y;
-    size = 3;
+    size = 2;
     hP = 500;
     c = color(10, random(50) + 200, 10);
   }
@@ -49,7 +49,7 @@ public class Barrier {
   void display() {
     fill(c);
     noStroke();
-    rect(locX, locY, 40*size, 16*size);
+    rect(locX - 22*size, locY-8*size, 44*size, 16*size);
     /**
      if (hP < 25) {
      rect(locX, locY, 10*size, 4*size);
