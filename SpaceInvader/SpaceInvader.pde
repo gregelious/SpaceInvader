@@ -24,12 +24,10 @@ void setup() {
     h += 40;
   }
 
-  /**
-   for (int i = 90; i < 900; i += 230) {
-   Barrier b = new Barrier(i, 500);
-   barriers.add(b);
-   }
-   **/
+  for (int i = 130; i < 900; i += 230) {
+    Barrier b = new Barrier(i, 550);
+    barriers.add(b);
+  }
 }
 
 //Player a = new Player();
@@ -47,9 +45,8 @@ void draw() {
     }
     text("Current Score: " + scoreCurrent, 200, 35);
     text("Highest Score: " + scoreHigh, 535, 35);
-    if (a.getHP() > 0) {
-      a.display();
-    }
+
+    a.display();
 
     for (int i = 0; i < enemies.size(); i++) {
       Enemy e = enemies.get(i);
@@ -81,6 +78,7 @@ void draw() {
 
 
     for (int i = 0; i < bullets.size(); i++) {
+      int gone = 0;
       Bullet b = bullets.get(i);
       if (b.getMode() == 1) {
         for (int x = 0; x < enemies.size(); x++) {
@@ -89,6 +87,7 @@ void draw() {
             e.setHP(e.getHP() - b.getDmg());
             bullets.remove(b);
             i--;
+            gone = 1;
           }
         }
       } else if (b.getMode() == 2) {
@@ -96,23 +95,27 @@ void draw() {
           a.setHP(a.getHP() - b.getDmg());
           bullets.remove(b);
           i--;
+          gone = 1;
         }
       }
 
-      for (int x = 0; x < barriers.size(); x++) {
-        Barrier ba = barriers.get(x);
-        if (((ba.getLocX() <= b.getLocX() + 7) || (b.getLocX() <= ba.getLocX() + 120)) && Math.abs(ba.getLocY() - b.getLocY()) < 25 ) {
-          ba.setHP(ba.getHP() - b.getDmg());
-          bullets.remove(b);
-          i--;
+      if (gone == 0) {
+        for (int x = 0; x < barriers.size(); x++) {
+          Barrier ba = barriers.get(x);
+          if (Math.abs(ba.getLocX() - b.getLocX()) < 45 && Math.abs(ba.getLocY() - b.getLocY()) < 17) {
+            ba.setHP(ba.getHP() - b.getDmg());
+            bullets.remove(b);
+            i--;
+          }
         }
+        b.move();
+        b.display();
       }
 
-      b.move();
-      b.display();
+      //b.move();
+      //b.display();
     }
-  }
-  else {
+  } else {
     background(0);
     fill(255);
     textSize(80);
