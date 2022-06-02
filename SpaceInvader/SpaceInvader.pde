@@ -33,7 +33,7 @@ void setup() {
 //Player a = new Player();
 
 void draw() {
-  if (a.getHP() > 0) {
+  if (a.getHP() > 0 && enemies.size() > 0) {
     if (countdown > 0) {
       countdown--;
     }
@@ -115,7 +115,7 @@ void draw() {
       //b.move();
       //b.display();
     }
-  } else {
+  } else if (a.getHP() <= 0) {
     background(0);
     fill(255);
     textSize(80);
@@ -123,6 +123,17 @@ void draw() {
       scoreHigh = scoreCurrent;
     }
     text("You Suck!", 310, 150);
+    text("Score: " + scoreCurrent, 140, 330);
+    text("Highest Score: " + scoreHigh, 140, 480);
+  }
+  else {
+    background(0);
+    fill(255);
+    textSize(80);
+    if (scoreCurrent > scoreHigh) {
+      scoreHigh = scoreCurrent;
+    }
+    text("Nice Job!", 340, 150);
     text("Score: " + scoreCurrent, 140, 330);
     text("Highest Score: " + scoreHigh, 140, 480);
   }
