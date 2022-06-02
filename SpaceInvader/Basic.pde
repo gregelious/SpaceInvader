@@ -22,7 +22,7 @@ public class Basic extends Enemy {
       locX = locX - 3;
       if (locX < 0) {
         locX = 15;
-        locY = locY + 20;
+        locY = locY + 5;
         strafe = 0;
       }
     }
