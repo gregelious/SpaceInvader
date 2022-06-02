@@ -25,7 +25,12 @@ public class Bullet {
   public Bullet(int x, int y, int mode) {
     locX = x;
     locY = y;
+    if(mode == 2) {
     velocity = 5;
+    }
+    else {
+      velocity = 8;
+    }
     this.mode = mode;
     size = 1;
     dmg = 100;
