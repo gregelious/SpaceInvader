@@ -2,12 +2,19 @@ ArrayList<Enemy> enemies;
 ArrayList<Barrier> barriers;
 ArrayList<Bullet> bullets;
 Player a;
-//ArrayList<Player> playerLives;
+int playerLives;
 int scoreCurrent;
 int scoreHigh;
 int countdown;
 
 void setup() {
+  /**
+  for (int i = 0; i < 3; i++) {
+    a = new Player();
+    playerLives.add(a);
+  }
+  **/
+  playerLives = 3;
   a = new Player();
   countdown = 0;
   size(1000, 700);
@@ -33,7 +40,7 @@ void setup() {
 //Player a = new Player();
 
 void draw() {
-  if (a.getHP() > 0 && enemies.size() > 0) {
+  if (a.getHP() > 0 && enemies.size() > 0 && playerLives > 0) {
     if (countdown > 0) {
       countdown--;
     }
@@ -45,6 +52,8 @@ void draw() {
     }
     text("Current Score: " + scoreCurrent, 200, 35);
     text("Highest Score: " + scoreHigh, 535, 35);
+    textSize(20);
+    text("Lives Left: " + playerLives, 10, 690);
 
     a.display();
 
@@ -115,7 +124,7 @@ void draw() {
       //b.move();
       //b.display();
     }
-  } else if (a.getHP() <= 0) {
+  } else if (a.getHP() <= 0 && playerLives <= 0) {
     background(0);
     fill(255);
     textSize(80);
@@ -126,7 +135,7 @@ void draw() {
     text("Score: " + scoreCurrent, 140, 330);
     text("Highest Score: " + scoreHigh, 140, 480);
   }
-  else {
+  else if (playerLives > 0 && enemies.size() <=0) {
     background(0);
     fill(255);
     textSize(80);
@@ -136,6 +145,10 @@ void draw() {
     text("Nice Job!", 340, 150);
     text("Score: " + scoreCurrent, 140, 330);
     text("Highest Score: " + scoreHigh, 140, 480);
+  }
+  else if (playerLives > 0) {
+    a.setHP(300);
+    playerLives--;
   }
 }
 
