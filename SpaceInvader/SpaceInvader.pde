@@ -124,7 +124,7 @@ void draw() {
       //b.move();
       //b.display();
     }
-  } else if (a.getHP() <= 0 && playerLives <= 0) {
+  } else if (playerLives < 1) {
     background(0);
     fill(255);
     textSize(80);
@@ -147,7 +147,7 @@ void draw() {
     text("Highest Score: " + scoreHigh, 140, 480);
   }
   else if (playerLives > 0) {
-    a.setHP(300);
+    a = new Player();
     playerLives--;
   }
 }
