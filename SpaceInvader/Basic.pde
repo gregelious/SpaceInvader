@@ -11,21 +11,33 @@ public class Basic extends Enemy {
   
   void move() {
     if (strafe == 0) {
-      locX = locX + 3;
-      if (locX > width) {
-        locX = 985;
-        locY = locY + 30;
-        strafe = 1;
+      locX += 2;
+      if (basics.get(basics.size() - 1).getLocX() > width) {
+        //locX = 985;
+        for (int i = 0; i < basics.size(); i++) {
+        basics.get(i).setLocY(basics.get(i).getLocY() + 5);
+        basics.get(i).setStrafe(1);
+        }
       }
     }
     if (strafe == 1) {
-      locX = locX - 3;
-      if (locX < 0) {
-        locX = 15;
-        locY = locY + 5;
-        strafe = 0;
+      locX -= 2;
+      if (basics.get(0).getLocX() < 0) {
+        //locX = 15;
+        for (int i = 0; i < basics.size(); i++) {
+        basics.get(i).setLocY(basics.get(i).getLocY() + 5);
+        basics.get(i).setStrafe(0);
+        }
       }
     }
+  }
+  
+  int getStrafe() {
+    return strafe;
+  }
+  
+  void setStrafe(int newStrafe) {
+    strafe = newStrafe;
   }
   
 }
