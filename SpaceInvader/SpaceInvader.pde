@@ -1,4 +1,4 @@
-ArrayList<Enemy> enemies;
+ArrayList<Basic> basics;
 ArrayList<Barrier> barriers;
 ArrayList<Bullet> bullets;
 Player a;
@@ -18,17 +18,17 @@ void setup() {
   a = new Player();
   countdown = 0;
   size(1000, 700);
-  enemies = new ArrayList<Enemy>();
+  basics = new ArrayList<Basic>();
   barriers = new ArrayList<Barrier>();
   bullets = new ArrayList<Bullet>();
   //playerLives = new ArrayList<Player>();
   scoreCurrent = 0;
   scoreHigh = 0;
-  int h = 100;
+  //int h = 100;
   for (int i = 15; i < 900; i += 90) {
-    Enemy e = new Basic(i, h);
-    enemies.add(e);
-    h += 40;
+    Basic e = new Basic(i, 200);
+    basics.add(e);
+    //h += 40;
   }
 
   for (int i = 130; i < 900; i += 230) {
@@ -40,7 +40,7 @@ void setup() {
 //Player a = new Player();
 
 void draw() {
-  if (a.getHP() > 0 && enemies.size() > 0 && playerLives > 0) {
+  if (a.getHP() > 0 && basics.size() > 0 && playerLives > 0) {
     if (countdown > 0) {
       countdown--;
     }
@@ -57,10 +57,10 @@ void draw() {
 
     a.display();
 
-    for (int i = 0; i < enemies.size(); i++) {
-      Enemy e = enemies.get(i);
+    for (int i = 0; i < basics.size(); i++) {
+      Enemy e = basics.get(i);
       if (e.getHP() <= 0) {
-        enemies.remove(e);
+        basics.remove(e);
         i--;
         scoreCurrent += 100;
       } else {
@@ -69,7 +69,7 @@ void draw() {
         }
         e.move();
         e.display();
-        if ((int)random(150) == 1) {
+        if ((int)random(170) == 1) {
           shoot(e.getLocX(), e.getLocY(), 2);
         }
       }
@@ -90,8 +90,8 @@ void draw() {
       int gone = 0;
       Bullet b = bullets.get(i);
       if (b.getMode() == 1) {
-        for (int x = 0; x < enemies.size(); x++) {
-          Enemy e = enemies.get(x);
+        for (int x = 0; x < basics.size(); x++) {
+          Enemy e = basics.get(x);
           if (Math.abs(e.getLocX() - b.getLocX()) < 14 && Math.abs(e.getLocY() - b.getLocY()) < 31 ) {
             e.setHP(e.getHP() - b.getDmg());
             bullets.remove(b);
@@ -135,7 +135,7 @@ void draw() {
     text("Score: " + scoreCurrent, 140, 330);
     text("Highest Score: " + scoreHigh, 140, 480);
   }
-  else if (playerLives > 0 && enemies.size() <=0) {
+  else if (playerLives > 0 && basics.size() <=0) {
     background(0);
     fill(255);
     textSize(80);
