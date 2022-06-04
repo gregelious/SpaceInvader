@@ -11,13 +11,13 @@ public class Intermediate extends Enemy {
   
   void move() {
     if (strafe == 0) {
-      locX = locX + 2;
+      locX = locX + 5;
       if (locX > width) {
         strafe = 1;
       }
     }
     if (strafe == 1) {
-      locX = locX - 2;
+      locX = locX - 5;
       if (locX < 0) {
         strafe = 0;
       }
