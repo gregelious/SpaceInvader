@@ -16,6 +16,14 @@ public class Characters {
     return locY;
   }
   
+  void setLocX(int newLoc) {
+    locX = newLoc;
+  }
+  
+  void setLocY(int newLoc) {
+    locY = newLoc;
+  }
+  
   void move() {
   
   }
