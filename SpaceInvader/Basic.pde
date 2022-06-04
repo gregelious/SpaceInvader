@@ -15,7 +15,7 @@ public class Basic extends Enemy {
       if (basics.get(basics.size() - 1).getLocX() > width) {
         //locX = 985;
         for (int i = 0; i < basics.size(); i++) {
-        basics.get(i).setLocY(basics.get(i).getLocY() + 5);
+        basics.get(i).setLocY(basics.get(i).getLocY() + 15);
         basics.get(i).setStrafe(1);
         }
       }
@@ -25,7 +25,7 @@ public class Basic extends Enemy {
       if (basics.get(0).getLocX() < 0) {
         //locX = 15;
         for (int i = 0; i < basics.size(); i++) {
-        basics.get(i).setLocY(basics.get(i).getLocY() + 5);
+        basics.get(i).setLocY(basics.get(i).getLocY() + 15);
         basics.get(i).setStrafe(0);
         }
       }
