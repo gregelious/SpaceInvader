@@ -26,7 +26,7 @@ void setup() {
   scoreHigh = 0;
   //int h = 100;
   for (int i = 15; i < 900; i += 90) {
-    Basic e = new Basic(i, 200);
+    Basic e = new Basic(i, 100);
     basics.add(e);
     //h += 40;
   }
