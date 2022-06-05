@@ -16,9 +16,9 @@ public class Bullet {
     size = 1;
     dmg = dam;
     if (mode == 1) {
-      c = color(random(50) + 200, 10, 10);
+      c = color(10, random(50) + 200, 10);
     } else {
-      c = color(10, 10, random(50) + 200);
+      c = color(255);
     }
   }
 
@@ -35,9 +35,9 @@ public class Bullet {
     size = 1;
     dmg = 100;
     if (mode == 1) {
-      c = color(random(50) + 200, 10, 10);
+      c = color(10, random(50) + 200, 10);
     } else {
-      c = color(10, 10, random(50) + 200);
+      c = color(255);
     }
   }
 
