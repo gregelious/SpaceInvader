@@ -42,7 +42,7 @@ void setup() {
 //Player a = new Player();
 
 void draw() {
-  if (a.getHP() > 0 && basics.size() > 0 && playerLives > 0) {
+  if (a.getHP() > 0 && playerLives > 0) {
     if (countdown > 0) {
       countdown--;
     }
@@ -73,11 +73,9 @@ void draw() {
         }
         if (basics.size() < 2) {
           e.setVel(12);
-        }
-        else if (basics.size() < 4) {
+        } else if (basics.size() < 4) {
           e.setVel(5);
-        }
-        else if (basics.size() < 8) {
+        } else if (basics.size() < 8) {
           e.setVel(2);
         }
         e.move();
@@ -98,14 +96,14 @@ void draw() {
       }
     }
     stroke(20, 250, 30);
-  strokeWeight(5);
-  line(0, 680, 1000, 683);
-  if (playerLives > 1) {
-    aa.display();
-  }
-  if (playerLives > 2) {
-    aaa.display();
-  }
+    strokeWeight(5);
+    line(0, 680, 1000, 683);
+    if (playerLives > 1) {
+      aa.display();
+    }
+    if (playerLives > 2) {
+      aaa.display();
+    }
 
     for (int i = 0; i < bullets.size(); i++) {
       int gone = 0;
@@ -140,11 +138,10 @@ void draw() {
         }
         if (b.getLocY() < 115 || b.getLocY() > 668) {
           bullets.remove(b);
-            i--;
-        } 
-        else {
-        b.move();
-        b.display();
+          i--;
+        } else {
+          b.move();
+          b.display();
         }
       }
 
@@ -161,16 +158,23 @@ void draw() {
     text("You Suck!", 310, 150);
     text("Score: " + scoreCurrent, 140, 330);
     text("Highest Score: " + scoreHigh, 140, 480);
-  } else if (playerLives > 0 && basics.size() <=0) {
-    background(0);
-    fill(255);
-    textSize(80);
-    if (scoreCurrent > scoreHigh) {
-      scoreHigh = scoreCurrent;
+  } else if (playerLives > 0 && basics.size() < 1) {
+    for (int i = 15; i < 900; i += 50) {
+      Basic e = new Basic(i, 120);
+      basics.add(e);
+      //h += 40;
     }
-    text("Nice Job!", 340, 150);
-    text("Score: " + scoreCurrent, 140, 330);
-    text("Highest Score: " + scoreHigh, 140, 480);
+    /**
+     background(0);
+     fill(255);
+     textSize(80);
+     if (scoreCurrent > scoreHigh) {
+     scoreHigh = scoreCurrent;
+     }
+     text("Nice Job!", 340, 150);
+     text("Score: " + scoreCurrent, 140, 330);
+     text("Highest Score: " + scoreHigh, 140, 480);
+     **/
   } else if (playerLives > 0) {
     a = new Player();
     playerLives--;
