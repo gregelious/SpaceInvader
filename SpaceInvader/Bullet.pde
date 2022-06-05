@@ -29,7 +29,7 @@ public class Bullet {
     velocity = 5;
     }
     else {
-      velocity = 8;
+      velocity = 12;
     }
     this.mode = mode;
     size = 1;
