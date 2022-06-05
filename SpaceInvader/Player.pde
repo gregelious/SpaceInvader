@@ -4,7 +4,7 @@ public class Player extends Characters {
   public Player() {
     locX = 500;
     locY = 615;
-    c = color(random(50) + 200, 10, 10);
+    c = color(10, random(50) + 200, 10);
     hP = 300;
   }
   
