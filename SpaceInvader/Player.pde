@@ -8,6 +8,13 @@ public class Player extends Characters {
     hP = 300;
   }
   
+  public Player(int x, int y) {
+    locX = x;
+    locY = y;
+    c = color(10, random(50) + 200, 10);
+    hP = 300;
+  }
+  
   String getBulletType() {
     return bulletType;
   }
