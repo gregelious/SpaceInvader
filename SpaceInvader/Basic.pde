@@ -3,7 +3,7 @@ public class Basic extends Enemy {
   public Basic(int x, int y) {
     locX = x;
     locY = y;
-    c = color(10, 10, random(50) + 200);
+    c = color(255);
     size = 1;
     hP = 100;
     strafe = 0;
