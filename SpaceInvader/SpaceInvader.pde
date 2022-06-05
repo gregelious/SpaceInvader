@@ -91,7 +91,12 @@ void draw() {
     stroke(20, 250, 30);
   strokeWeight(5);
   line(0, 680, 1000, 683);
-
+  if (playerLives > 1) {
+    aa.display();
+  }
+  if (playerLives > 2) {
+    aaa.display();
+  }
 
     for (int i = 0; i < bullets.size(); i++) {
       int gone = 0;
@@ -160,13 +165,6 @@ void draw() {
   } else if (playerLives > 0) {
     a = new Player();
     playerLives--;
-  }
-  
-  if (playerLives > 1) {
-    aa.display();
-  }
-  if (playerLives > 2) {
-    aaa.display();
   }
 }
 
