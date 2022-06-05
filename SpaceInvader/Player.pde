@@ -5,14 +5,16 @@ public class Player extends Characters {
     locX = 500;
     locY = 615;
     c = color(10, random(50) + 200, 10);
-    hP = 300;
+    hP = 100;
+    velocity = 5;
   }
   
   public Player(int x, int y) {
     locX = x;
     locY = y;
     c = color(10, random(50) + 200, 10);
-    hP = 300;
+    hP = 100;
+    velocity = 5;
   }
   
   String getBulletType() {
@@ -24,14 +26,14 @@ public class Player extends Characters {
   }
   
   void moveLeft() {
-    locX = locX - 5;
+    locX -= velocity;
     if (locX < 15) {
       locX = 15;
     } 
   }
   
   void moveRight() {
-    locX = locX + 5;
+    locX += velocity;
     if (locX > 985) {
       locX = 985;
     }
