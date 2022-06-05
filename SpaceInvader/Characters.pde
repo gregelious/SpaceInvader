@@ -3,6 +3,7 @@ public class Characters {
   int locX;
   int locY;
   color c;
+  int velocity;
   
   int getHP() {
     return hP;
@@ -30,6 +31,14 @@ public class Characters {
   
   void setHP(int newHP) {
     hP = newHP;
+  }
+  
+  int getVel() {
+    return velocity;
+  }
+  
+  void setVel(int newVel) {
+    velocity = newVel;
   }
   
   void display() {
