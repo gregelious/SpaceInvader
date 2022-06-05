@@ -9,7 +9,7 @@ public class Barrier {
     locX = x;
     locY = y;
     size = 2;
-    hP = 500;
+    hP = 1000;
     c = color(10, random(50) + 200, 10);
   }
 
