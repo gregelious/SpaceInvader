@@ -17,7 +17,7 @@ void setup() {
   playerLives = 3;
   a = new Player();
   countdown = 0;
-  size(1000, 700);
+  size(1000, 750);
   basics = new ArrayList<Basic>();
   barriers = new ArrayList<Barrier>();
   bullets = new ArrayList<Bullet>();
@@ -54,8 +54,8 @@ void draw() {
     text("H I - S C O R E  S C O R E <2>", 430, 35);
     text(scoreToString(scoreCurrent), 200, 80);
     text(scoreToString(scoreHigh), 451, 80);
-    textSize(20);
-    text("Lives Left: " + playerLives, 10, 690);
+    textSize(25);
+    text(playerLives, 10, 730);
 
     a.display();
 
