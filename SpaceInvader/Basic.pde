@@ -7,11 +7,12 @@ public class Basic extends Enemy {
     size = 1;
     hP = 100;
     strafe = 0;
+    velocity = 1;
   }
   
   void move() {
     if (strafe == 0) {
-      locX += 2;
+      locX += velocity;
       if (basics.get(basics.size() - 1).getLocX() > width) {
         //locX = 985;
         for (int i = 0; i < basics.size(); i++) {
@@ -21,7 +22,7 @@ public class Basic extends Enemy {
       }
     }
     if (strafe == 1) {
-      locX -= 2;
+      locX -= velocity;
       if (basics.get(0).getLocX() < 0) {
         //locX = 15;
         for (int i = 0; i < basics.size(); i++) {
