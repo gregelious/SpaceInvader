@@ -6,6 +6,8 @@ int playerLives;
 int scoreCurrent;
 int scoreHigh;
 int countdown;
+Player aa = new Player(70, 701);
+Player aaa = new Player(110, 701);
 
 void setup() {
   /**
@@ -54,8 +56,8 @@ void draw() {
     text("H I - S C O R E  S C O R E <2>", 430, 35);
     text(scoreToString(scoreCurrent), 200, 80);
     text(scoreToString(scoreHigh), 451, 80);
-    textSize(25);
-    text(playerLives, 10, 730);
+    text(playerLives, 10, 710);
+    text("S C O R E   0 0", 720, 710);
 
     a.display();
 
@@ -86,6 +88,9 @@ void draw() {
         b.display();
       }
     }
+    stroke(20, 250, 30);
+  strokeWeight(5);
+  line(0, 680, 1000, 683);
 
 
     for (int i = 0; i < bullets.size(); i++) {
@@ -119,8 +124,14 @@ void draw() {
             i--;
           }
         }
+        if (b.getLocY() < 115 || b.getLocY() > 668) {
+          bullets.remove(b);
+            i--;
+        } 
+        else {
         b.move();
         b.display();
+        }
       }
 
       //b.move();
@@ -149,6 +160,13 @@ void draw() {
   } else if (playerLives > 0) {
     a = new Player();
     playerLives--;
+  }
+  
+  if (playerLives > 1) {
+    aa.display();
+  }
+  if (playerLives > 2) {
+    aaa.display();
   }
 }
 
