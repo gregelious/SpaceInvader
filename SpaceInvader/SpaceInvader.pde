@@ -27,7 +27,7 @@ void setup() {
   scoreCurrent = 0;
   scoreHigh = 0;
   //int h = 100;
-  for (int i = 15; i < 900; i += 90) {
+  for (int i = 15; i < 900; i += 50) {
     Basic e = new Basic(i, 120);
     basics.add(e);
     //h += 40;
@@ -66,14 +66,23 @@ void draw() {
       if (e.getHP() <= 0) {
         basics.remove(e);
         i--;
-        scoreCurrent += 100;
+        scoreCurrent += 10;
       } else {
         if (Math.abs(e.getLocX() - a.getLocX()) < 30 && Math.abs(e.getLocY() - a.getLocY()) < 30) {
           a.setHP(0);
         }
+        if (basics.size() < 2) {
+          e.setVel(12);
+        }
+        else if (basics.size() < 4) {
+          e.setVel(5);
+        }
+        else if (basics.size() < 8) {
+          e.setVel(2);
+        }
         e.move();
         e.display();
-        if ((int)random(170) == 1) {
+        if ((int)random(350) == 1) {
           shoot(e.getLocX(), e.getLocY(), 2);
         }
       }
