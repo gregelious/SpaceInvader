@@ -9,11 +9,11 @@ int countdown;
 
 void setup() {
   /**
-  for (int i = 0; i < 3; i++) {
-    a = new Player();
-    playerLives.add(a);
-  }
-  **/
+   for (int i = 0; i < 3; i++) {
+   a = new Player();
+   playerLives.add(a);
+   }
+   **/
   playerLives = 3;
   a = new Player();
   countdown = 0;
@@ -26,7 +26,7 @@ void setup() {
   scoreHigh = 0;
   //int h = 100;
   for (int i = 15; i < 900; i += 90) {
-    Basic e = new Basic(i, 100);
+    Basic e = new Basic(i, 120);
     basics.add(e);
     //h += 40;
   }
@@ -50,8 +50,10 @@ void draw() {
     if (scoreCurrent > scoreHigh) {
       scoreHigh = scoreCurrent;
     }
-    text("Current Score: " + scoreCurrent, 200, 35);
-    text("Highest Score: " + scoreHigh, 535, 35);
+    text("S C O R E <1>", 160, 35);
+    text("H I - S C O R E  S C O R E <2>", 430, 35);
+    text(scoreToString(scoreCurrent), 200, 80);
+    text(scoreToString(scoreHigh), 451, 80);
     textSize(20);
     text("Lives Left: " + playerLives, 10, 690);
 
@@ -134,8 +136,7 @@ void draw() {
     text("You Suck!", 310, 150);
     text("Score: " + scoreCurrent, 140, 330);
     text("Highest Score: " + scoreHigh, 140, 480);
-  }
-  else if (playerLives > 0 && basics.size() <=0) {
+  } else if (playerLives > 0 && basics.size() <=0) {
     background(0);
     fill(255);
     textSize(80);
@@ -145,8 +146,7 @@ void draw() {
     text("Nice Job!", 340, 150);
     text("Score: " + scoreCurrent, 140, 330);
     text("Highest Score: " + scoreHigh, 140, 480);
-  }
-  else if (playerLives > 0) {
+  } else if (playerLives > 0) {
     a = new Player();
     playerLives--;
   }
@@ -179,4 +179,27 @@ void keyPressed() {
 void shoot(int x, int y, int mode) {
   Bullet b = new Bullet(x, y, mode);
   bullets.add(b);
+}
+
+String scoreToString(int score) {
+  String d = "";
+  String s = Integer.toString(score);
+  if (score < 10) {
+    d = "0 0 0 " + score;
+  } else if (score < 100) {
+    d = "0 0 ";
+    for (int i = 0; i < s.length(); i++) {
+      d += s.substring(i, i+1) + " ";
+    }
+  } else if (score < 1000) {
+    d = "0 ";
+    for (int i = 0; i < s.length(); i++) {
+      d += s.substring(i, i+1) + " ";
+    }
+  } else {
+    for (int i = 0; i < s.length(); i++) {
+      d += s.substring(i, i+1) + " ";
+    }
+  }
+  return d;
 }
