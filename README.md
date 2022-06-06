@@ -31,3 +31,11 @@ Saturday May 28: only made classes, did simplest one line methods.
 Sunday May 30: Mostly completed evey class except main SpaceInvader class.
 
 Monday May 30: did SpaceInvader class and tweaked other classes slightly and made demo branch. Now the game is slightly playable and there are enemies that shoot back and a score counter.
+
+Wednesday June 1: Barriers work now, first basic enemy doesnt shoot laser anymore (working as intended now), bullets register better when near enemies & barriers, added end screen for winning & losing 
+
+Friday June 3: Player has 3 lives now
+
+Saturday June 4: Text & icons on top and bottom mimcs actual game now, basic enemies movbe in unison now (they all move down at the same time), player is green now and enemies are white now
+
+Sunday June 5: barriers have double the hp as before, enemies get faster when there are less of them now, added velocity variables and get & set methods for velocity to Characters class
