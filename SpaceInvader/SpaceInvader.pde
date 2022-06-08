@@ -24,7 +24,7 @@ void setup() {
   countdown = 0;
   scoreCurrent = 0;
   scoreHigh = 0;
-  
+
   basicsHeight = 120;
   fillBasics(basicsHeight);
   fillBarriers(530);
@@ -41,14 +41,11 @@ void draw() {
     showBullets();
     showBasics();
     showBarriers();
-    
   } else if (playerLives < 1) {
     endScreen();
-    
   } else if (playerLives > 0 && basics.size() < 1) {
     basicsHeight += 30;
     fillBasics(basicsHeight);
-    
   } else if (playerLives > 0) {
     player = new Player();
     playerLives--;
@@ -116,7 +113,7 @@ void fillBasics(int height) {
 
 void fillBarriers(int height) {
   for (int i = 130; i < 900; i += 230) {
-    Barrier b = new Barrier(i, height);
+    Barrier b = new Barrier(i, height, 2, 2000);
     barriers.add(b);
   }
 }
@@ -165,10 +162,12 @@ void showBasics() {
       }
       e.move();
       e.display();
-      if ((int)random(350) == 1) {
-        shoot(e.getLocX(), e.getLocY(), 2);
-      }
     }
+  }
+  if ((int)random(60) == 1) {
+    int ran = (int)random(basics.size());
+    Enemy e = basics.get(ran);
+    shoot(e.getLocX(), e.getLocY(), 2);
   }
 }
 
