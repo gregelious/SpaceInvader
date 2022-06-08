@@ -1,48 +1,35 @@
 ArrayList<Basic> basics;
 ArrayList<Barrier> barriers;
 ArrayList<Bullet> bullets;
-Player a;
+
 int playerLives;
 int scoreCurrent;
 int scoreHigh;
 int countdown;
-Player aa = new Player(70, 701);
-Player aaa = new Player(110, 701);
+
+Player player, p2, p3;
 
 void setup() {
-  /**
-   for (int i = 0; i < 3; i++) {
-   a = new Player();
-   playerLives.add(a);
-   }
-   **/
-  playerLives = 3;
-  a = new Player();
-  countdown = 0;
   size(1000, 750);
   basics = new ArrayList<Basic>();
   barriers = new ArrayList<Barrier>();
   bullets = new ArrayList<Bullet>();
-  //playerLives = new ArrayList<Player>();
+
+  playerLives = 3;
+  player = new Player();
+  p2 = new Player(70, 701);
+  p3 = new Player(110, 701);
+
+  countdown = 0;
   scoreCurrent = 0;
   scoreHigh = 0;
-  //int h = 100;
-  for (int i = 15; i < 900; i += 50) {
-    Basic e = new Basic(i, 120);
-    basics.add(e);
-    //h += 40;
-  }
 
-  for (int i = 130; i < 900; i += 230) {
-    Barrier b = new Barrier(i, 550);
-    barriers.add(b);
-  }
+  fillBasics(120);
+  fillBarriers(530);
 }
 
-//Player a = new Player();
-
 void draw() {
-  if (a.getHP() > 0 && playerLives > 0 && basics.size() > 0) {
+  if (player.getHP() > 0 && playerLives > 0 && basics.size() > 0) {
     if (countdown > 0) {
       countdown--;
     }
@@ -59,7 +46,7 @@ void draw() {
     text(playerLives, 10, 710);
     text("S C O R E   0 0", 720, 710);
 
-    a.display();
+    player.display();
 
     for (int i = 0; i < basics.size(); i++) {
       Enemy e = basics.get(i);
@@ -68,8 +55,8 @@ void draw() {
         i--;
         scoreCurrent += 10;
       } else {
-        if (Math.abs(e.getLocX() - a.getLocX()) < 30 && Math.abs(e.getLocY() - a.getLocY()) < 30) {
-          a.setHP(0);
+        if (Math.abs(e.getLocX() - player.getLocX()) < 30 && Math.abs(e.getLocY() - player.getLocY()) < 30) {
+          player.setHP(0);
         }
         if (basics.size() < 2) {
           e.setVel(12);
@@ -99,10 +86,10 @@ void draw() {
     strokeWeight(5);
     line(0, 680, 1000, 683);
     if (playerLives > 1) {
-      aa.display();
+      p2.display();
     }
     if (playerLives > 2) {
-      aaa.display();
+      p3.display();
     }
 
     for (int i = 0; i < bullets.size(); i++) {
@@ -119,8 +106,8 @@ void draw() {
           }
         }
       } else if (b.getMode() == 2) {
-        if (Math.abs(a.getLocX() - b.getLocX()) < 14 && Math.abs(a.getLocY() - b.getLocY()) < 31 ) {
-          a.setHP(a.getHP() - b.getDmg());
+        if (Math.abs(player.getLocX() - b.getLocX()) < 14 && Math.abs(player.getLocY() - b.getLocY()) < 31 ) {
+          player.setHP(player.getHP() - b.getDmg());
           bullets.remove(b);
           i--;
           gone = 1;
@@ -144,9 +131,6 @@ void draw() {
           b.display();
         }
       }
-
-      //b.move();
-      //b.display();
     }
   } else if (playerLives < 1) {
     background(0);
@@ -176,31 +160,31 @@ void draw() {
      text("Highest Score: " + scoreHigh, 140, 480);
      **/
   } else if (playerLives > 0) {
-    a = new Player();
+    player = new Player();
     playerLives--;
   }
 }
 
 void mouseClicked() {
   if (countdown == 0) {
-    shoot(a.getLocX(), a.getLocY(), 1);
+    shoot(player.getLocX(), player.getLocY(), 1);
     countdown += 40;
   }
 }
 
 void keyPressed() {
   if (key == 'd') {
-    a.moveRight();
+    player.moveRight();
   }
   if (key == 'a') {
-    a.moveLeft();
+    player.moveLeft();
   }
   if (key == CODED) {
     if (keyCode == RIGHT) {
-      a.moveRight();
+      player.moveRight();
     }
     if (keyCode == LEFT) {
-      a.moveLeft();
+      player.moveLeft();
     }
   }
 }
@@ -231,4 +215,18 @@ String scoreToString(int score) {
     }
   }
   return d;
+}
+
+void fillBasics(int height) {
+  for (int i = 15; i < 900; i += 50) {
+    Basic e = new Basic(i, height);
+    basics.add(e);
+  }
+}
+
+void fillBarriers(int height) {
+  for (int i = 130; i < 900; i += 230) {
+    Barrier b = new Barrier(i, height);
+    barriers.add(b);
+  }
 }
