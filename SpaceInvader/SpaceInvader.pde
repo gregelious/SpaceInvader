@@ -233,18 +233,18 @@ void endScreen() {
   if (scoreCurrent > scoreHigh) {
     scoreHigh = scoreCurrent;
   }
-  text("You Suck!", 310, 150);
+  if (scoreCurrent > 1000) {
+    text("INSANE!", 310, 150);
+  }
+  else if (scoreCurrent > 500) {
+    text("Pretty Good!", 310, 150);
+  }
+  else if (scoreCurrent > 100) {
+    text("Not Bad!", 310, 150);
+  }
+  else {
+    text("Better Luck Next Time!", 70, 150);
+  }
   text("Score: " + scoreCurrent, 140, 330);
   text("Highest Score: " + scoreHigh, 140, 480);
-  /**
-   background(0);
-   fill(255);
-   textSize(80);
-   if (scoreCurrent > scoreHigh) {
-   scoreHigh = scoreCurrent;
-   }
-   text("Nice Job!", 340, 150);
-   text("Score: " + scoreCurrent, 140, 330);
-   text("Highest Score: " + scoreHigh, 140, 480);
-   **/
 }
