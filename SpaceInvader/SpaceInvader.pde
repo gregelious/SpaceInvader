@@ -16,7 +16,7 @@ void setup() {
   barriers = new ArrayList<Barrier>();
   bullets = new ArrayList<Bullet>();
 
-  playerLives = 3;
+  playerLives = 0;
   player = new Player();
   p2 = new Player(70, 701);
   p3 = new Player(110, 701);
@@ -112,7 +112,7 @@ void fillBasics(int height) {
 }
 
 void fillBarriers(int height) {
-  for (int i = 130; i < 900; i += 230) {
+  for (int i = 147; i < 900; i += 230) {
     Barrier b = new Barrier(i, height, 2, 2000);
     barriers.add(b);
   }
@@ -132,7 +132,7 @@ void showText() {
   text(playerLives, 10, 710);
   text("S C O R E   0 0", 720, 710);
   stroke(20, 250, 30);
-  strokeWeight(5);
+  strokeWeight(4);
   line(0, 680, 1000, 683);
   if (playerLives > 1) {
     p2.display();
@@ -234,17 +234,22 @@ void endScreen() {
     scoreHigh = scoreCurrent;
   }
   if (scoreCurrent > 1000) {
-    text("INSANE!", 310, 150);
+    text("INSANE!", 310, 130);
   }
   else if (scoreCurrent > 500) {
-    text("Pretty Good!", 310, 150);
+    text("Pretty Good!", 310, 130);
   }
   else if (scoreCurrent > 100) {
-    text("Not Bad!", 310, 150);
+    text("Not Bad!", 310, 130);
   }
   else {
-    text("Better Luck Next Time!", 70, 150);
+    text("Better Luck Next Time!", 70, 130);
   }
-  text("Score: " + scoreCurrent, 140, 330);
-  text("Highest Score: " + scoreHigh, 140, 480);
+  text("Score: " + scoreCurrent, 140, 270);
+  text("Highest Score: " + scoreHigh, 140, 400);
+  
+  fill (10, 255, 10);
+  rect(250, 480, 500, 200);
+  fill(0);
+  text("RESTART", 330, 610);
 }
