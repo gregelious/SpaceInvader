@@ -42,7 +42,7 @@ void setup() {
 //Player a = new Player();
 
 void draw() {
-  if (a.getHP() > 0 && playerLives > 0) {
+  if (a.getHP() > 0 && playerLives > 0 && basics.size() > 0) {
     if (countdown > 0) {
       countdown--;
     }
