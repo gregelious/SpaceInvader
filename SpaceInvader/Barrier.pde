@@ -16,7 +16,6 @@ public class Barrier {
   public Barrier (int x, int y, int size, int hP) {
     locX = x;
     locY = y;
-    hP = 100;
     c = color(10, random(50) + 200, 10);
     this.size = size;
     this.hP = hP;
