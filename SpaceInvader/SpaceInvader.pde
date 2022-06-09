@@ -53,11 +53,10 @@ void draw() {
 }
 
 void mouseClicked() {
-  if (countdown == 0) {
+  if (countdown == 0 && playerLives > 0) {
     shoot(player.getLocX(), player.getLocY(), 1);
     countdown += 40;
-  }
-  if (playerLives < 1 && mouseX >= 250 && mouseX <= 750 && mouseY >= 480 && mouseY <= 680) {
+  } else if (playerLives < 1 && mouseX >= 250 && mouseX <= 750 && mouseY >= 480 && mouseY <= 680) {
     restart();
   }
 }
@@ -266,7 +265,6 @@ void restart() {
 
   countdown = 0;
   scoreCurrent = 0;
-  scoreHigh = 0;
 
   basicsHeight = 120;
   fillBasics(basicsHeight);
