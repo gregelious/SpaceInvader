@@ -16,7 +16,7 @@ void setup() {
   barriers = new ArrayList<Barrier>();
   bullets = new ArrayList<Bullet>();
 
-  playerLives = 0;
+  playerLives = 1;
   player = new Player();
   p2 = new Player(70, 701);
   p3 = new Player(110, 701);
@@ -56,6 +56,9 @@ void mouseClicked() {
   if (countdown == 0) {
     shoot(player.getLocX(), player.getLocY(), 1);
     countdown += 40;
+  }
+  if (playerLives < 1 && mouseX >= 250 && mouseX <= 750 && mouseY >= 480 && mouseY <= 680) {
+    restart();
   }
 }
 
@@ -235,21 +238,37 @@ void endScreen() {
   }
   if (scoreCurrent > 1000) {
     text("INSANE!", 310, 130);
-  }
-  else if (scoreCurrent > 500) {
+  } else if (scoreCurrent > 500) {
     text("Pretty Good!", 310, 130);
-  }
-  else if (scoreCurrent > 100) {
+  } else if (scoreCurrent > 100) {
     text("Not Bad!", 310, 130);
-  }
-  else {
+  } else {
     text("Better Luck Next Time!", 70, 130);
   }
   text("Score: " + scoreCurrent, 140, 270);
   text("Highest Score: " + scoreHigh, 140, 400);
-  
+
   fill (10, 255, 10);
   rect(250, 480, 500, 200);
   fill(0);
   text("RESTART", 330, 610);
+}
+
+void restart() {
+  basics = new ArrayList<Basic>();
+  barriers = new ArrayList<Barrier>();
+  bullets = new ArrayList<Bullet>();
+
+  playerLives = 0;
+  player = new Player();
+  p2 = new Player(70, 701);
+  p3 = new Player(110, 701);
+
+  countdown = 0;
+  scoreCurrent = 0;
+  scoreHigh = 0;
+
+  basicsHeight = 120;
+  fillBasics(basicsHeight);
+  fillBarriers(530);
 }
