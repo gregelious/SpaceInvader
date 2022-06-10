@@ -203,9 +203,9 @@ void showIntermediates() {
       e.display();
     }
   }
-  if ((int)random(60) == 1) {
-    int ran = (int)random(basics.size());
-    Enemy e = basics.get(ran);
+  if ((int)random(20) == 1 && intermediates.size() > 0) {
+    int ran = (int)random(intermediates.size());
+    Enemy e = intermediates.get(ran);
     shoot(e.getLocX(), e.getLocY(), 2);
   }
 }
@@ -313,6 +313,7 @@ void restart() {
 
   countdown = 0;
   scoreCurrent = 0;
+  level = 0;
 
   basicsHeight = 120;
   fillBasics(basicsHeight);
