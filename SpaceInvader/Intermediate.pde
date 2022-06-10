@@ -14,7 +14,7 @@ public class Intermediate extends Enemy {
       locY += 1;
     }
     if (locX >= 1000) {
-      locX = 15;
+      locX = (int)random(500);
     }
     locX += velocity;
   }  
