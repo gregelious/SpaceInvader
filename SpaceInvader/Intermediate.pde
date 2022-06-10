@@ -7,16 +7,26 @@ public class Intermediate extends Enemy {
     size = 1;
     hP = 150;
     velocity = 2;
+    strafe = (int)random(2);
   }
-  
+
   void move() {
-    if ((int)random(60) == 1) {
-      locY += 1;
+    if (basics.size() < 0 && (int)random(30) == 1) {
+      locY += 4;
+    } else {
+      velocity = basics.get(0).getVel() * 2;
+      locY = basics.get(0).getLocY() - 40;
     }
-    if (locX >= 1000) {
-      locX = (int)random(500);
+    if (strafe != 0 && locX >= 1000) {
+      locX = 0;
     }
-    locX += velocity;
-  }  
-  
+    else if (strafe == 0 && locX <= 0) {
+      locX = 1000;
+    }
+    if (strafe == 0) {
+      locX -= velocity;
+    } else {
+      locX += velocity;
+    }
+  }
 }
