@@ -258,7 +258,7 @@ void restart() {
   barriers = new ArrayList<Barrier>();
   bullets = new ArrayList<Bullet>();
 
-  playerLives = 0;
+  playerLives = 3;
   player = new Player();
   p2 = new Player(70, 701);
   p3 = new Player(110, 701);
