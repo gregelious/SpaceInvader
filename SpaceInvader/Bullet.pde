@@ -26,7 +26,7 @@ public class Bullet {
     locX = x;
     locY = y;
     if(mode == 2) {
-    velocity = 5;
+    velocity = 6;
     }
     else {
       velocity = 12;
