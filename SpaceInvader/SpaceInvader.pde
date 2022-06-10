@@ -1,5 +1,5 @@
 ArrayList<Basic> basics;
-int basicsHeight;
+ArrayList<Intermediate> intermediates;
 ArrayList<Barrier> barriers;
 ArrayList<Bullet> bullets;
 
@@ -7,6 +7,8 @@ int playerLives;
 int scoreCurrent;
 int scoreHigh;
 int countdown;
+int basicsHeight;
+int level;
 
 Player player, p2, p3;
 
@@ -15,6 +17,7 @@ void setup() {
   basics = new ArrayList<Basic>();
   barriers = new ArrayList<Barrier>();
   bullets = new ArrayList<Bullet>();
+  intermediates = new ArrayList<Intermediate>();
 
   playerLives = 3;
   player = new Player();
@@ -24,8 +27,9 @@ void setup() {
   countdown = 0;
   scoreCurrent = 0;
   scoreHigh = 0;
-
-  basicsHeight = 120;
+  level = 0;
+  basicsHeight = 150;
+  
   fillBasics(basicsHeight);
   fillBarriers(530);
 }
@@ -58,6 +62,7 @@ void mouseClicked() {
     countdown += 40;
   } else if (playerLives < 1 && mouseX >= 250 && mouseX <= 750 && mouseY >= 480 && mouseY <= 680) {
     restart();
+    level++;
   }
 }
 
@@ -110,6 +115,13 @@ void fillBasics(int height) {
   for (int i = 15; i < 900; i += 50) {
     Basic e = new Basic(i, height);
     basics.add(e);
+  }
+}
+
+void fillIntermediates(int height) {
+  for (int i = 0; i < level + 1; i++) {
+    Intermediate e = new intermediate((int)random(1000), basicsHeight - 40);
+    intermediates.add(e);
   }
 }
 
