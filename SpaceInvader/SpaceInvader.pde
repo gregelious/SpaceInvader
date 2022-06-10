@@ -16,7 +16,7 @@ void setup() {
   barriers = new ArrayList<Barrier>();
   bullets = new ArrayList<Bullet>();
 
-  playerLives = 1;
+  playerLives = 3;
   player = new Player();
   p2 = new Player(70, 701);
   p3 = new Player(110, 701);
@@ -132,7 +132,7 @@ void showText() {
   text(scoreToString(scoreCurrent), 200, 80);
   text(scoreToString(scoreHigh), 451, 80);
   text(playerLives, 10, 710);
-  text("S C O R E   0 0", 720, 710);
+  text("C R E D I T   0 0", 700, 710);
   stroke(20, 250, 30);
   strokeWeight(4);
   line(0, 680, 1000, 683);
