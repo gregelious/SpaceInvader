@@ -29,8 +29,9 @@ void setup() {
   scoreHigh = 0;
   level = 0;
   basicsHeight = 150;
-  
+
   fillBasics(basicsHeight);
+  fillIntermediates();
   fillBarriers(530);
 }
 
@@ -44,14 +45,17 @@ void draw() {
     player.display();
     showBullets();
     showBasics();
+    showIntermediates();
     showBarriers();
   } else if (playerLives < 1) {
     endScreen();
   } else if (playerLives > 0 && basics.size() < 1) {
+    level++;
     basicsHeight += 30;
     fillBasics(basicsHeight);
+    fillIntermediates();
   } else if (playerLives > 0) {
-    player = new Player();
+    player = new Player(500, 608);
     playerLives--;
   }
 }
@@ -62,7 +66,6 @@ void mouseClicked() {
     countdown += 40;
   } else if (playerLives < 1 && mouseX >= 250 && mouseX <= 750 && mouseY >= 480 && mouseY <= 680) {
     restart();
-    level++;
   }
 }
 
@@ -118,9 +121,9 @@ void fillBasics(int height) {
   }
 }
 
-void fillIntermediates(int height) {
-  for (int i = 0; i < level + 1; i++) {
-    Intermediate e = new intermediate((int)random(1000), basicsHeight - 40);
+void fillIntermediates() {
+  for (int i = 0; i < level; i++) {
+    Intermediate e = new Intermediate((int)random(1000), basicsHeight - 40);
     intermediates.add(e);
   }
 }
@@ -185,6 +188,28 @@ void showBasics() {
   }
 }
 
+void showIntermediates() {
+  for (int i = 0; i < intermediates.size(); i++) {
+    Enemy e = intermediates.get(i);
+    if (e.getHP() <= 0) {
+      basics.remove(e);
+      i--;
+      scoreCurrent += 20;
+    } else {
+      if (Math.abs(e.getLocX() - player.getLocX()) < 30 && Math.abs(e.getLocY() - player.getLocY()) < 30) {
+        player.setHP(0);
+      }
+      e.move();
+      e.display();
+    }
+  }
+  if ((int)random(60) == 1) {
+    int ran = (int)random(basics.size());
+    Enemy e = basics.get(ran);
+    shoot(e.getLocX(), e.getLocY(), 2);
+  }
+}
+
 void showBarriers() {
   for (int i = 0; i < barriers.size(); i++) {
     Barrier b = barriers.get(i);
@@ -209,6 +234,17 @@ void showBullets() {
           bullets.remove(b);
           i--;
           gone = 1;
+        }
+      }
+      if (gone == 0) {
+        for (int x = 0; x < intermediates.size(); x++) {
+          Enemy e = intermediates.get(x);
+          if (Math.abs(e.getLocX() - b.getLocX()) < 14 && Math.abs(e.getLocY() - b.getLocY()) < 31 ) {
+            e.setHP(e.getHP() - b.getDmg());
+            bullets.remove(b);
+            i--;
+            gone = 1;
+          }
         }
       }
     } else if (b.getMode() == 2) {
