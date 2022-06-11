@@ -4,6 +4,7 @@ public class Characters {
   int locY;
   color c;
   int velocity;
+  PImage avatar;
   
   int getHP() {
     return hP;
