@@ -1,4 +1,6 @@
 public class Intermediate extends Enemy {
+  int chop;
+  int pause;
 
   public Intermediate(int x, int y) {
     locX = x;
@@ -8,13 +10,25 @@ public class Intermediate extends Enemy {
     hP = 150;
     velocity = 2;
     strafe = (int)random(2);
+    chop = 0;
+    pause = 30;
   }
 
   void move() {
-    if (basics.size() < 0 && (int)random(30) == 1) {
-      locY += 4;
-    } else {
-      velocity = basics.get(0).getVel() * 2;
+    chop++;
+    if (basics.size() < 0 && chop%pause == 0) {
+      velocity = 20;
+      locY += 20;
+    } else if (basics.size() > 0) {
+      if (basics.size() < 2) {
+        velocity = 15;
+      }
+      else if (basics.size() < 4) {
+        velocity = 8;
+      }
+      else if (basics.size() < 8) {
+        velocity = 5;
+      }
       locY = basics.get(0).getLocY() - 40;
     }
     if (strafe != 0 && locX >= 1000) {
