@@ -47,4 +47,13 @@ public class Characters {
     noStroke();
     ellipse(locX, locY, 30, 30);
   }
+  
+  void display(color c) {
+    //fill(c);
+    //noStroke();
+    //ellipse(locX, locY, 30, 30);
+    tint(c);
+    imageMode(CENTER);
+    image(avatar, locX, locY, 54, 55);
+  }
 }
