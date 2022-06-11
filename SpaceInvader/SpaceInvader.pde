@@ -161,7 +161,7 @@ void showText() {
 
 void showBasics() {
   for (int i = 0; i < basics.size(); i++) {
-    Enemy e = basics.get(i);
+    Basic e = basics.get(i);
     if (e.getHP() <= 0) {
       basics.remove(e);
       i--;
@@ -171,11 +171,11 @@ void showBasics() {
         player.setHP(0);
       }
       if (basics.size() < 2) {
-        e.setVel(12);
+        e.setPause(2);
       } else if (basics.size() < 4) {
-        e.setVel(5);
+        e.setPause(5);
       } else if (basics.size() < 8) {
-        e.setVel(2);
+        e.setPause(20);
       }
       e.move();
       e.display();
