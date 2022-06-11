@@ -40,14 +40,5 @@ public class Player extends Characters {
       locX = 985;
     }
   }
-  
-  void display(int x, int y) {
-    //fill(c);
-    //noStroke();
-    //ellipse(locX, locY, 30, 30);
-    tint(0, 255, 0);
-    imageMode(CENTER);
-    image(avatar, x, y, 54, 55);
-  }
 
 }
