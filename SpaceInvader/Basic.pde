@@ -13,7 +13,7 @@ public class Basic extends Enemy {
   void move() {
     if (strafe == 0) {
       locX += velocity;
-      if (basics.get(basics.size() - 1).getLocX() > width) {
+      if (basics.get(basics.size() - 1).getLocX() >= 985) {
         //locX = 985;
         for (int i = 0; i < basics.size(); i++) {
         basics.get(i).setLocY(basics.get(i).getLocY() + 15);
@@ -23,7 +23,7 @@ public class Basic extends Enemy {
     }
     if (strafe == 1) {
       locX -= velocity;
-      if (basics.get(0).getLocX() < 0) {
+      if (basics.get(0).getLocX() <= 15) {
         //locX = 15;
         for (int i = 0; i < basics.size(); i++) {
         basics.get(i).setLocY(basics.get(i).getLocY() + 15);
