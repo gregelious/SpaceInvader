@@ -7,6 +7,7 @@ public class Player extends Characters {
     c = color(10, random(50) + 200, 10);
     hP = 100;
     velocity = 5;
+    avatar = loadImage("spaceship.png");
   }
   
   public Player(int x, int y) {
@@ -15,6 +16,7 @@ public class Player extends Characters {
     c = color(10, random(50) + 200, 10);
     hP = 100;
     velocity = 5;
+    avatar = loadImage("spaceship.png");
   }
   
   String getBulletType() {
@@ -37,6 +39,15 @@ public class Player extends Characters {
     if (locX > 985) {
       locX = 985;
     }
+  }
+  
+  void display(int x, int y) {
+    //fill(c);
+    //noStroke();
+    //ellipse(locX, locY, 30, 30);
+    tint(0, 255, 0);
+    imageMode(CENTER);
+    image(avatar, x, y, 54, 55);
   }
 
 }
