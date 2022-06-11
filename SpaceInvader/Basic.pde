@@ -13,31 +13,12 @@ public class Basic extends Enemy {
   }
   
   void move() {
-    if (strafe == 0) {
-      if (chop%pause == 0) {
+    chop++;
+    if (strafe == 0 && chop%pause == 0) {
         locX += velocity * 15;
-      }
-      chop++;
-      if (basics.get(basics.size() - 1).getLocX() > 985) {
-        //locX = 985;
-        for (int i = 0; i < basics.size(); i++) {
-        basics.get(i).setLocY(basics.get(i).getLocY() + 15);
-        basics.get(i).setStrafe(1);
-        }
-      }
     }
-    if (strafe == 1) {
-      if (chop%pause == 0) {
-        locX -= velocity * 15;
-      }
-      chop++;
-      if (basics.get(0).getLocX() < 15) {
-        //locX = 15;
-        for (int i = 0; i < basics.size(); i++) {
-        basics.get(i).setLocY(basics.get(i).getLocY() + 15);
-        basics.get(i).setStrafe(0);
-        }
-      }
+    if (strafe == 1 && chop%pause == 0) {
+      locX -= velocity * 15;
     }
   }
   
