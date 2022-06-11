@@ -1,8 +1,5 @@
 public class Basic extends Enemy {
   
-  int chop;
-  int pause;
-  
   public Basic(int x, int y) {
     locX = x;
     locY = y;
@@ -42,22 +39,6 @@ public class Basic extends Enemy {
         }
       }
     }
-  }
-  
-  int getStrafe() {
-    return strafe;
-  }
-  
-  void setStrafe(int newStrafe) {
-    strafe = newStrafe;
-  }
-  
-  void setPause(int p) {
-    pause = p;
-  }
-  
-  int getPause() {
-    return pause;
   }
   
 }
