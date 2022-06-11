@@ -46,7 +46,7 @@ void draw() {
     }
 
     showText();
-    player.display(player.getLocX(), player.getLocY());
+    player.display(color(0, 255, 0));
     showBullets();
     showBarriers();
     showBasics();
@@ -165,10 +165,10 @@ void showText() {
   strokeWeight(4);
   line(0, 680, 1000, 683);
   if (playerLives > 1) {
-    p2.display();
+    p2.display(color(0, 255, 0));
   }
   if (playerLives > 2) {
-    p3.display();
+    p3.display(color(0, 255, 0));
   }
 }
 
