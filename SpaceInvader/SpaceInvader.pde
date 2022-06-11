@@ -27,7 +27,7 @@ void setup() {
   countdown = 0;
   scoreCurrent = 0;
   scoreHigh = 0;
-  level = 1;
+  level = 0;
   basicsHeight = 150;
 
   fillBasics(basicsHeight);
