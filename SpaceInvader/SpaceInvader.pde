@@ -27,7 +27,7 @@ void setup() {
   countdown = 0;
   scoreCurrent = 0;
   scoreHigh = 0;
-  level = 0;
+  level = 1;
   basicsHeight = 150;
 
   fillBasics(basicsHeight);
@@ -36,7 +36,7 @@ void setup() {
 }
 
 void draw() {
-  if (player.getHP() > 0 && playerLives > 0 && basics.size() > 0) {
+  if (player.getHP() > 0 && playerLives > 0 && basics.size() + intermediates.size() > 0) {
     if (countdown > 0) {
       countdown--;
     }
@@ -49,7 +49,7 @@ void draw() {
     showBarriers();
   } else if (playerLives < 1) {
     endScreen();
-  } else if (playerLives > 0 && basics.size() < 1) {
+  } else if (playerLives > 0 && basics.size() + intermediates.size() < 1) {
     level++;
     basicsHeight += 30;
     fillBasics(basicsHeight);
@@ -192,7 +192,7 @@ void showIntermediates() {
   for (int i = 0; i < intermediates.size(); i++) {
     Enemy e = intermediates.get(i);
     if (e.getHP() <= 0) {
-      basics.remove(e);
+      intermediates.remove(e);
       i--;
       scoreCurrent += 20;
     } else {
@@ -203,7 +203,7 @@ void showIntermediates() {
       e.display();
     }
   }
-  if ((int)random(20) == 1 && intermediates.size() > 0) {
+  if ((int)random(60) == 1 && intermediates.size() > 0) {
     int ran = (int)random(intermediates.size());
     Enemy e = intermediates.get(ran);
     shoot(e.getLocX(), e.getLocY(), 2);
@@ -303,6 +303,7 @@ void endScreen() {
 
 void restart() {
   basics = new ArrayList<Basic>();
+  intermediates = new ArrayList<Intermediate>();
   barriers = new ArrayList<Barrier>();
   bullets = new ArrayList<Bullet>();
 
