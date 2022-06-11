@@ -56,4 +56,8 @@ public class Basic extends Enemy {
     pause = p;
   }
   
+  int getPause() {
+    return pause;
+  }
+  
 }
