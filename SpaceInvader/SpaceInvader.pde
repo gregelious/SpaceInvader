@@ -173,6 +173,21 @@ void showText() {
 }
 
 void showBasics() {
+  if (basics.get(0).getStrafe() == 0) {
+    if (basics.get(basics.size() - 1).getLocX() >= 985) {
+      for (int x = 0; x < basics.size(); x++) {
+        basics.get(x).setLocY(basics.get(x).getLocY() + 15);
+        basics.get(x).setStrafe(1);
+      }
+    }
+  } else if (basics.get(0).getStrafe() == 1) {
+    if (basics.get(0).getLocX() <= 15) {
+      for (int x = 0; x < basics.size(); x++) {
+        basics.get(x).setLocY(basics.get(x).getLocY() + 15); 
+        basics.get(x).setStrafe(0);
+      }
+    }
+  }
   for (int i = 0; i < basics.size(); i++) {
     Basic e = basics.get(i);
     if (e.getHP() <= 0) {
@@ -189,21 +204,6 @@ void showBasics() {
         e.setPause(5);
       } else if (basics.size() < 8) {
         e.setPause(20);
-      }
-      if (basics.get(0).getStrafe() == 0) {
-        if (basics.get(basics.size() - 1).getLocX() >= 985) {
-          for (int x = 0; x < basics.size(); x++) {
-            basics.get(x).setLocY(basics.get(x).getLocY() + 15);
-            basics.get(x).setStrafe(1);
-          }
-        }
-      } else if (basics.get(0).getStrafe() == 1) {
-        if (basics.get(0).getLocX() <= 15) {
-          for (int x = 0; x < basics.size(); x++) {
-            basics.get(x).setLocY(basics.get(x).getLocY() + 15); 
-            basics.get(x).setStrafe(0);
-          }
-        }
       }
       e.move();
       e.display();
