@@ -46,7 +46,7 @@ void draw() {
     }
 
     showText();
-    player.display();
+    player.display(player.getLocX(), player.getLocY());
     showBullets();
     showBarriers();
     showBasics();
