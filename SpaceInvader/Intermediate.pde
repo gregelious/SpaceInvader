@@ -1,6 +1,4 @@
 public class Intermediate extends Enemy {
-  int chop;
-  int pause;
 
   public Intermediate(int x, int y) {
     locX = x;
@@ -17,7 +15,6 @@ public class Intermediate extends Enemy {
   void move() {
     chop++;
     if (basics.size() < 0 && chop%pause == 0) {
-      velocity = 20;
       locY += 20;
     } else if (basics.size() > 0) {
       if (basics.size() < 2) {
