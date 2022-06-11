@@ -190,6 +190,21 @@ void showBasics() {
       } else if (basics.size() < 8) {
         e.setPause(20);
       }
+      if (basics.get(0).getStrafe() == 0) {
+        if (basics.get(basics.size() - 1).getLocX() >= 985) {
+          for (int x = 0; x < basics.size(); x++) {
+            basics.get(x).setLocY(basics.get(x).getLocY() + 15);
+            basics.get(x).setStrafe(1);
+          }
+        }
+      } else if (basics.get(0).getStrafe() == 1) {
+        if (basics.get(0).getLocX() <= 15) {
+          for (int x = 0; x < basics.size(); x++) {
+            basics.get(x).setLocY(basics.get(x).getLocY() + 15); 
+            basics.get(x).setStrafe(0);
+          }
+        }
+      }
       e.move();
       e.display();
     }
