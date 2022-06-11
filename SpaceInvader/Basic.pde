@@ -1,5 +1,7 @@
 public class Basic extends Enemy {
   
+  int chop;
+  
   public Basic(int x, int y) {
     locX = x;
     locY = y;
@@ -8,11 +10,15 @@ public class Basic extends Enemy {
     hP = 100;
     strafe = 0;
     velocity = 1;
+    chop = 0;
   }
   
   void move() {
     if (strafe == 0) {
-      locX += velocity;
+      if (chop%70 == 0) {
+        locX += velocity * 15;
+      }
+      chop++;
       if (basics.get(basics.size() - 1).getLocX() >= 985) {
         //locX = 985;
         for (int i = 0; i < basics.size(); i++) {
@@ -22,7 +28,10 @@ public class Basic extends Enemy {
       }
     }
     if (strafe == 1) {
-      locX -= velocity;
+      if (chop%70 == 0) {
+        locX -= velocity * 15;
+      }
+      chop++;
       if (basics.get(0).getLocX() <= 15) {
         //locX = 15;
         for (int i = 0; i < basics.size(); i++) {
