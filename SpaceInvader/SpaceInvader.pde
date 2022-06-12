@@ -10,16 +10,17 @@ int scoreHigh;
 int countdown;
 int basicsHeight;
 int level;
+int total;
 
 Player player, p2, p3;
 
 void setup() {
   size(1000, 750);
-  basics = new ArrayList<Basic>();
+  //basics = new ArrayList<Basic>();
   barriers = new ArrayList<Barrier>();
   bullets = new ArrayList<Bullet>();
-  intermediates = new ArrayList<Intermediate>();
-  hards = new ArrayList<Hard>();
+  //intermediates = new ArrayList<Intermediate>();
+  //hards = new ArrayList<Hard>();
 
   playerLives = 3;
   player = new Player();
@@ -29,8 +30,8 @@ void setup() {
   countdown = 0;
   scoreCurrent = 0;
   scoreHigh = 0;
-  level = 1;
-  basicsHeight = 150 + (level * 30);
+  level = 5;
+  basicsHeight = 150 + (level * 10);
 
   fillBasics(basicsHeight);
   fillIntermediates();
@@ -39,7 +40,7 @@ void setup() {
 }
 
 void draw() {
-  int total = basics.size() + intermediates.size();
+  total = basics.size() + intermediates.size() + hards.size();
   if (player.getHP() > 0 && playerLives > 0 && total > 0) {
     if (countdown > 0) {
       countdown--;
@@ -121,13 +122,15 @@ String scoreToString(int score) {
 }
 
 void fillBasics(int height) {
-  for (int i = 15; i < 900; i += 50) {
+  basics = new ArrayList<Basic>();
+  for (int i = 15; i < 850; i += 50) {
     Basic e = new Basic(i, height);
     basics.add(e);
   }
 }
 
 void fillIntermediates() {
+  intermediates = new ArrayList<Intermediate>();
   for (int i = 0; i < level; i++) {
     Intermediate e = new Intermediate((int)random(1000), basicsHeight - 40);
     intermediates.add(e);
@@ -135,7 +138,8 @@ void fillIntermediates() {
 }
 
 void fillHards() {
-  for (int i = 0; i < level - 1; i++) {
+  hards = new ArrayList<Hard>();
+  for (int i = 0; i < level - 2; i++) {
     Hard e = new Hard((int)random(1000), basicsHeight - 80);
     hards.add(e);
   }
@@ -173,6 +177,7 @@ void showText() {
 }
 
 void showBasics() {
+  if (basics.size() > 1) {
   if (basics.get(0).getStrafe() == 0) {
     if (basics.get(basics.size() - 1).getLocX() >= 985) {
       for (int x = 0; x < basics.size(); x++) {
@@ -214,9 +219,11 @@ void showBasics() {
     Enemy e = basics.get(ran);
     shoot(e.getLocX(), e.getLocY(), 2);
   }
+  }
 }
 
 void showIntermediates() {
+  if (intermediates.size() > 1) {
   for (int i = 0; i < intermediates.size(); i++) {
     Enemy e = intermediates.get(i);
     if (e.getHP() <= 0) {
@@ -236,9 +243,11 @@ void showIntermediates() {
     Enemy e = intermediates.get(ran);
     shoot(e.getLocX(), e.getLocY(), 2);
   }
+  }
 }
 
 void showHards() {
+  if (hards.size() > 1) {
   for (int i = 0; i < hards.size(); i++) {
     Enemy e = hards.get(i);
     if (e.getHP() <= 0) {
@@ -250,13 +259,14 @@ void showHards() {
         player.setHP(0);
       }
       e.move();
-      e.display();
+      e.display(color(255), 35, 32);
     }
   }
   if ((int)random(60) == 1 && hards.size() > 0) {
     int ran = (int)random(hards.size());
     Enemy e = hards.get(ran);
     shoot(e.getLocX(), e.getLocY(), 2);
+  }
   }
 }
 
@@ -324,9 +334,10 @@ void showBullets() {
           ba.setHP(ba.getHP() - b.getDmg());
           bullets.remove(b);
           i--;
+          gone = 1;
         }
       }
-      if (b.getLocY() < 115 || b.getLocY() > 668) {
+      if (b.getLocY() < 115 || b.getLocY() > 668 && gone == 0) {
         bullets.remove(b);
         i--;
       } else {
