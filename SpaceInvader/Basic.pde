@@ -23,13 +23,4 @@ public class Basic extends Enemy {
     }
   }
   
-  void display(color co, int w, int h) {
-    //fill(255);
-    //noStroke();
-    //ellipse(locX, locY, 30, 30);
-    tint(co);
-    imageMode(CENTER);
-    image(avatar, locX, locY, w, h);
-  }
-  
 }
