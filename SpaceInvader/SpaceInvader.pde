@@ -29,7 +29,7 @@ void setup() {
   countdown = 0;
   scoreCurrent = 0;
   scoreHigh = 0;
-  level = 0;
+  level = 1;
   basicsHeight = 150 + (level * 30);
 
   fillBasics(basicsHeight);
@@ -46,7 +46,7 @@ void draw() {
     }
 
     showText();
-    player.display(color(0, 255, 0));
+    player.display(color(0, 255, 0), 54, 55);
     showBullets();
     showBarriers();
     showBasics();
@@ -165,10 +165,10 @@ void showText() {
   strokeWeight(4);
   line(0, 680, 1000, 683);
   if (playerLives > 1) {
-    p2.display(color(0, 255, 0));
+    p2.display(color(0, 255, 0), 54, 55);
   }
   if (playerLives > 2) {
-    p3.display(color(0, 255, 0));
+    p3.display(color(0, 255, 0), 54, 55);
   }
 }
 
@@ -228,7 +228,7 @@ void showIntermediates() {
         player.setHP(0);
       }
       e.move();
-      e.display();
+      e.display(color(255), 35, 32);
     }
   }
   if ((int)random(60) == 1 && intermediates.size() > 0) {
