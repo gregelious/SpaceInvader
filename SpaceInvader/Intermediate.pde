@@ -10,6 +10,7 @@ public class Intermediate extends Enemy {
     strafe = (int)random(2);
     chop = 0;
     pause = 30;
+    avatar = loadImage("intermediateimage.png");
   }
 
   void move() {
