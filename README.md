@@ -23,6 +23,7 @@ Press D or RIGHT ARROW to move right
 
 Click mouse button to shoot
 
+For presentation purposes, it starts at level 4, to start at beginning, go to the setup and change "level = 4" to "level = 0"
 
 Development Log:
 
@@ -39,3 +40,13 @@ Friday June 3: Player has 3 lives now
 Saturday June 4: Text & icons on top and bottom mimcs actual game now, basic enemies movbe in unison now (they all move down at the same time), player is green now and enemies are white now
 
 Sunday June 5: barriers have double the hp as before, enemies get faster when there are less of them now, added velocity variables and get & set methods for velocity to Characters class
+
+Wednesday June 8: Added different text messages when game over, cleaned up code for setup, levels added (enemies respawn)
+
+Thursday June 9: Added working restart button after player dies, bullets slightly faster, added Intermediate enemies
+
+Friday June 10: Basic movement is in instyances now, like actual game, intermediates can shoot now
+
+Saturday June 11: Added avatars for player and enemies, added Hard enemies
+
+Sunday June 12: added sound when shooting for players and enemies
