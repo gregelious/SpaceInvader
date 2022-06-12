@@ -48,12 +48,12 @@ public class Characters {
     ellipse(locX, locY, 30, 30);
   }
   
-  void display(color c) {
-    //fill(c);
+  void display(color co, int w, int h) {
+    //fill(255);
     //noStroke();
     //ellipse(locX, locY, 30, 30);
-    tint(c);
+    tint(co);
     imageMode(CENTER);
-    image(avatar, locX, locY, 54, 55);
+    image(avatar, locX, locY, w, h);
   }
 }
