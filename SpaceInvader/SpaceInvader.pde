@@ -30,7 +30,7 @@ void setup() {
   countdown = 0;
   scoreCurrent = 0;
   scoreHigh = 0;
-  level = 5;
+  level = 0;
   basicsHeight = 150 + (level * 10);
 
   fillBasics(basicsHeight);
@@ -177,7 +177,7 @@ void showText() {
 }
 
 void showBasics() {
-  if (basics.size() > 1) {
+  if (basics.size() > 0) {
   if (basics.get(0).getStrafe() == 0) {
     if (basics.get(basics.size() - 1).getLocX() >= 985) {
       for (int x = 0; x < basics.size(); x++) {
@@ -223,7 +223,7 @@ void showBasics() {
 }
 
 void showIntermediates() {
-  if (intermediates.size() > 1) {
+  if (intermediates.size() > 0) {
   for (int i = 0; i < intermediates.size(); i++) {
     Enemy e = intermediates.get(i);
     if (e.getHP() <= 0) {
@@ -247,7 +247,7 @@ void showIntermediates() {
 }
 
 void showHards() {
-  if (hards.size() > 1) {
+  if (hards.size() > 0) {
   for (int i = 0; i < hards.size(); i++) {
     Enemy e = hards.get(i);
     if (e.getHP() <= 0) {
