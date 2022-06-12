@@ -9,6 +9,7 @@ public class Hard extends Enemy {
     strafe = 0;
     chop = 0;
     pause = 120;
+    avatar = loadImage("hardimage.png");
   }
   
   void move() {
@@ -20,7 +21,7 @@ public class Hard extends Enemy {
       locY = basics.get(0).getLocY() - 80;
     }
     else if (intermediates.size() > 0) {
-      locY = basics.get(0).getLocY() - 40;
+      locY = intermediates.get(0).getLocY() - 40;
     }
     else {
       locY = (int)random(488) + 120;
