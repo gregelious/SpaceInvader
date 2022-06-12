@@ -23,7 +23,7 @@ public class Hard extends Enemy {
     else if (intermediates.size() > 0) {
       locY = intermediates.get(0).getLocY() - 40;
     }
-    else {
+    else if (chop%pause == 0) {
       locY = (int)random(488) + 120;
     }
   }
