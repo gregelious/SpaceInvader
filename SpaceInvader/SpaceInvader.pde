@@ -74,7 +74,7 @@ void draw() {
 
 void mouseClicked() {
   if (countdown == 0 && playerLives > 0) {
-    shot.play();
+    //shot.play();
     shoot(player.getLocX(), player.getLocY(), 1);
     countdown += 40;
   } else if (playerLives < 1 && mouseX >= 250 && mouseX <= 750 && mouseY >= 480 && mouseY <= 680) {
@@ -101,6 +101,7 @@ void keyPressed() {
 
 void shoot(int x, int y, int mode) {
   Bullet b = new Bullet(x, y, mode);
+  shot.play();
   bullets.add(b);
 }
 
