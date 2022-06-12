@@ -1,5 +1,6 @@
 import processing.sound.*;
 SoundFile shot;
+//SoundFile eMove;
 
 ArrayList<Basic> basics;
 ArrayList<Intermediate> intermediates;
@@ -42,6 +43,7 @@ void setup() {
   fillHards();
   
   shot = new SoundFile(this, "shotsound.wav");
+ // eMove = new SoundFile(this, "enemysound.wav");
 }
 
 void draw() {
@@ -55,6 +57,7 @@ void draw() {
     player.display(color(0, 255, 0), 54, 55);
     showBullets();
     showBarriers();
+    //eMove.play();
     showBasics();
     showIntermediates();
     showHards();
