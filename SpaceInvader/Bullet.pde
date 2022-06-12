@@ -2,7 +2,7 @@ public class Bullet {
   int locX;
   int locY;
   int velocity;
-  int acceleration;
+  //int acceleration;
   int size;
   int dmg;
   int mode;
