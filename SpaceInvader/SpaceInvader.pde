@@ -1,3 +1,6 @@
+import processing.sound.*;
+SoundFile shot;
+
 ArrayList<Basic> basics;
 ArrayList<Intermediate> intermediates;
 ArrayList<Hard> hards;
@@ -37,6 +40,8 @@ void setup() {
   fillIntermediates();
   fillBarriers(530);
   fillHards();
+  
+  shot = new SoundFile(this, "shotsound.wav");
 }
 
 void draw() {
@@ -69,6 +74,7 @@ void draw() {
 
 void mouseClicked() {
   if (countdown == 0 && playerLives > 0) {
+    shot.play();
     shoot(player.getLocX(), player.getLocY(), 1);
     countdown += 40;
   } else if (playerLives < 1 && mouseX >= 250 && mouseX <= 750 && mouseY >= 480 && mouseY <= 680) {
