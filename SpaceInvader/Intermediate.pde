@@ -15,11 +15,12 @@ public class Intermediate extends Enemy {
 
   void move() {
     chop++;
-    if (basics.size() < 0 && chop%pause == 0) {
-      locY += 20;
+    if (basics.size() < 1 && chop%pause == 0) {
+      velocity = 12;
+      locY += 8;
     } else if (basics.size() > 0) {
       if (basics.size() < 2) {
-        velocity = 15;
+        velocity = 12;
       }
       else if (basics.size() < 4) {
         velocity = 8;
