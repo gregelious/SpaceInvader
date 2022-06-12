@@ -34,7 +34,13 @@ void setup() {
   countdown = 0;
   scoreCurrent = 0;
   scoreHigh = 0;
+  
+  
+  // CHANGE LEVEL TO 0 TO START AT VERY BEGINNING
   level = 4;
+  // CHANGE LEVEL TO 0 TO START AT VERY BEGINNING
+  
+  
   basicsHeight = 150 + (level * 10);
 
   fillBasics(basicsHeight);
