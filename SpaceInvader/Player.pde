@@ -1,5 +1,5 @@
 public class Player extends Characters {
-  String bulletType;
+  //String bulletType;
   
   public Player() {
     locX = 80;
@@ -19,6 +19,8 @@ public class Player extends Characters {
     avatar = loadImage("spaceship.png");
   }
   
+  
+  /**
   String getBulletType() {
     return bulletType;
   }
@@ -26,6 +28,7 @@ public class Player extends Characters {
   void setBulletType(String newBullet) {
     bulletType = newBullet;
   }
+  **/
   
   void moveLeft() {
     locX -= velocity;
