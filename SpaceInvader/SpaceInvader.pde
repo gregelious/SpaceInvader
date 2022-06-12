@@ -206,7 +206,7 @@ void showBasics() {
         e.setPause(20);
       }
       e.move();
-      e.display();
+      e.display(color(255), 35, 32);
     }
   }
   if ((int)random(60) == 1 && basics.size() > 1) {
