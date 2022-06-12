@@ -10,6 +10,7 @@ public class Basic extends Enemy {
     velocity = 1;
     chop = 0;
     pause = 40;
+    avatar = loadImage("basicimage.png");
   }
   
   void move() {
@@ -20,6 +21,15 @@ public class Basic extends Enemy {
     if (strafe == 1 && chop%pause == 0) {
       locX -= velocity * 15;
     }
+  }
+  
+  void display(color co, int w, int h) {
+    //fill(255);
+    //noStroke();
+    //ellipse(locX, locY, 30, 30);
+    tint(co);
+    imageMode(CENTER);
+    image(avatar, locX, locY, w, h);
   }
   
 }
