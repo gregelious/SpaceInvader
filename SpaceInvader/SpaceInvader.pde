@@ -37,7 +37,7 @@ void setup() {
   
   
   // CHANGE LEVEL TO 0 TO START AT VERY BEGINNING
-  level = 4;
+  level = 0;
   // CHANGE LEVEL TO 0 TO START AT VERY BEGINNING
   
   
